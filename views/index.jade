@@ -1,5 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	if (!user)
+		//- <a href="/login">Login</a>
+		a(href="/login") Login
+		br
+		a(href="/register") Register
+	if (user)
+		p Congrats! You are logged in as #{user.username}
+		//- EJS: <p>Congrats You are logged in as <% user.username %></p>
+		a(href="/logout") Logout
