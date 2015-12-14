@@ -9,8 +9,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/register', function(req, res, next){
-	res.render('index')
+	return res.render('index')
 });
+
+router.get('/login', function(req, res, next){
+	res.render('login');
+})
 
 router.post('/register', function(req, res, next){
 	Account.register(new Account(
