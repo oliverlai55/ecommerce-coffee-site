@@ -33,10 +33,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 app.use(express.static(path.join(__dirname, 'public')));
-//Passport Configuration
 
+//Passport Configuration
+var Account = require('.models/account');
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 
 //Mongoose
 mongoose.connect('mongodb://localhost:27017/coffee')
