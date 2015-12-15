@@ -2,10 +2,13 @@ extends layout
 
 block content
 	nav.navbar.navbar-default
-		.container-fluid
+		.container
 			.navbar-header
 				a.navbar-brand(href="#")
 					img(src='./images/dc_roasters_105x65_lt.png')
+			ul.nav.navbar-nav.navbar-right
+				lia.log-in-btn(href='#') log in
+				button.btn.btn-primary(type='submit') Subscribe
 	.container
 		//- div with class of container
 		h1 Login Page
