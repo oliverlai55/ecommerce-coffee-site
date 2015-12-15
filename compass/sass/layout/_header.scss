@@ -3,3 +3,254 @@
 // Global Header styles
 // -------------------------------
 
+#header {
+	background: image-url('CupInBeans.jpg') no-repeat center;
+	background-size: cover;
+	border-bottom: 1px solid darken($cream, 10%);
+
+	&.loggedin {
+		#header-inner {
+			height: 350px;
+		}
+	}
+
+	#header-inner {
+		position: relative;
+		height: 450px;
+	}
+
+	img {
+		width: 100%;
+	}
+
+	#header-text-wrapper {
+	    width: 45%;
+	    position: absolute;
+	    bottom: 120px;
+	    text-shadow: 3px 3px 10px rgba($black, 0.7);
+
+	    #header-text {
+	    	font-size: 50px;
+	    	color: $cream;
+	    	line-height: 1;
+	    	margin-bottom: 5px;
+	    }
+
+	    #header-sub-text {
+			font-size: 30px;
+			color: $cream;
+	    	line-height: 1;
+	    	margin: 0;
+	    }
+	}
+
+	#subscribe-box {
+		position: absolute;
+		right: 30px;
+		top: 30px;
+		width: 40%;
+		max-width: 300px;
+		border-radius: 5px;
+		background: $white;
+		background: rgba($white, 0.8);
+
+		.form-group {
+			padding: 0 30px;
+		}
+		#sub-header {
+			max-width: 80%;
+			margin: auto;
+			color: $brown_dk;
+			font-size: 30px;
+			text-align: center;
+			padding-bottom: 10px;
+			line-height: 1em;
+			padding-top: 10px;
+		}
+		#sub-text {
+			max-width: 50%;
+			margin: auto;
+			color: $brown_dk;
+			font-size: 20px;
+			text-align: center;
+			padding-bottom: 10px;
+		}
+
+		button {
+		    width: 50%;
+		    padding: 10px;
+		    background-color: $green_lt;
+		    border-radius: 5px;
+		    border: none;
+		    color: $white;
+		    font-weight: bold;
+		    letter-spacing: 1px;
+		    font-size: 16px;
+		    text-align: center;
+		}
+		#or-button {
+			text-align: center;
+    		font-size: 20px;
+		}
+	}
+}
+
+
+.container-header-text {
+	font-size: 12px;
+}
+
+#nav {
+    overflow: hidden;
+    padding: 10px 0;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    min-width: 320px;
+	color: $cream;
+	font-size: 16px;
+	text-transform: lowercase;
+    background-color: $brown_dk;
+    @include background-image(linear-gradient($brown_dk, lighten($brown_dk, 10%)));
+    z-index: 1000;
+    border-bottom: 1px solid $brown_lt;
+
+	#logo {
+		float: left;
+		height: 0;
+		width: 105px;
+		padding-top: 65px;
+		overflow: hidden;
+		background: image-url('dc_roasters_105x65_lt.png') no-repeat;
+	}
+
+	#right-wrapper {
+		float: right;
+
+		#nav-log-in, #nav-subscribe {
+			display: inline;
+			a {
+				display: inline-block;
+				padding: 0 10px;
+				line-height: 65px;
+				color: $white;
+			}
+			.btn {
+				line-height: 35px;
+				margin-left: 10px;
+				padding: 0 20px;
+				text-transform: none;
+			}
+		}
+
+	}
+}
+
+#signup-wrapper {
+	background: $brown_dk;
+	border-bottom: 1px solid $brown_lt;
+
+	ul {
+		margin: 5px 30px;
+		padding: 0;
+		overflow: hidden;
+		background: lighten($brown_dk, 5%);
+		border-radius: 10px;
+	}
+
+	li {
+		float: left;
+	    width: 25%;
+	    list-style-type: none;
+	    padding: 5px;
+	}
+
+	a {
+		color: lighten($brown_dk, 20%);
+		font-weight: 700;
+		background: image-url('menu-steps.png') no-repeat;
+		background-size: 35px, auto;
+		height: 30px;
+		padding: 5px 0 0 40px;
+		display: block;
+		overflow: hidden;
+	}
+
+	.active {
+		a {
+			color: $white;
+			background-image: image-url('menu-steps-active.png');
+		}
+	}
+
+
+	.welcome { background-position: 0 0; }
+	.options { background-position: 0 -30px; }
+	.delivery { background-position: 0 -60px; }
+	.payment { background-position: 0 -90px; }
+}
+
+
+@media (max-width: 600px) {
+	#header {
+
+		&.loggedin {
+			#header-inner {
+				height: auto;
+			}
+		}
+
+		#header-inner {
+			height: auto;
+		}
+
+		#header-text-wrapper {
+		    width: auto;
+		    position: static;
+		    text-shadow: 2px 2px 6px rgba($black, 0.9);
+		    text-align: center;
+		    margin: 30px 15px;
+
+		    #header-text {
+		    	font-size: 50px;
+		    	color: $cream;
+		    	line-height: 1;
+		    	margin-bottom: 5px;
+		    }
+
+		    #header-sub-text {
+				font-size: 30px;
+				color: $cream;
+		    	line-height: 1;
+		    	margin: 0;
+		    }
+		}
+
+		#subscribe-box {
+			position: static;
+			width: auto;
+			max-width: none;
+			margin: 15px auto;
+			padding: 15px;
+			max-width: 300px;
+		}
+	}
+
+	#signup-wrapper {
+		ul {
+			padding: 0 15px;
+		}
+		li {
+			float: none;
+		    width: auto;
+		    list-style-type: none;
+		    padding: 5px;
+		    border-top: 1px dotted lighten($brown_dk, 20%);
+
+		    &:first-child {
+		    	border: none;
+		    }
+		}
+	}
+}

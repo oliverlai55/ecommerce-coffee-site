@@ -1,12 +1,66 @@
 extends layout
 
 block content
-	if (!user)
+	if (username)
 		//- <a href="/login">Login</a>
-		a(href="/login") Login
-		br
-		a(href="/register") Register
-	if (user)
-		p Congrats! You are logged in as #{user.username}
-		//- EJS: <p>Congrats You are logged in as <% user.username %></p>
-		a(href="/logout") Logout
+		#header.loggedin
+			#header-inner.container
+				#header-text-wrapper
+					h1#header-text A better way to grind
+					p#header-sub-text Freshly roasted coffee beans delivered weekly to your door.
+		
+	if (!username)
+		#header.anon
+			#header-inner.container
+				#header-text-wrapper
+					h1#header-text A better way to grind
+					p#header-sub-text Freshly roasted coffee beans delivered weekly to your door.
+				#subscribe-box
+					#sub-header Craft Coffee. Good Coffee.
+					form(role='form', action="/login", method="post")
+						.form-group
+							label Enter Email Address
+							input.form-control(type='text', name="user")
+						.form-group
+							label Password
+							input.form-control(type='password', name="password")
+						.cta-container
+							button(type='submit' name='login') Login
+							#or-button OR
+							button(type='submit' name='getStarted' value='getSTarted') Get Started
+
+	.container
+		.head-box
+			h2 We Source coffee beans from around the World and roast them fresh daily
+			p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+	h2.how-it-works_label.container How it works
+	.how-it-works
+
+		.how-it-works-one.how-it-works_inner
+			.container
+				.works-text
+					h3 1. We get the coffee
+					p Lorem Ipsum is simply
+					p Lorem Ipsum is simply
+					p Lorem Ipsum is simply
+
+		.how-it-works-two.how-it-works_inner
+			.container
+				.works-image <img src="./images/grower.jpg">
+				.works-text
+					h3 2. We pick up the coffee
+					p Lorem Ipsum is simply
+					p Lorem Ipsum is simply
+					p Lorem Ipsum is simply
+
+		.how-it-works-three.how-it-works_inner
+			.container
+				.works-text
+					h3 3. You drink the coffee
+					p Lorem Ipsum is simply
+					p Lorem Ipsum is simply
+					p Lorem Ipsum is simply
+
+	.container.cta-container
+		a#getStarted(href="/register") Get Started

@@ -22,11 +22,22 @@
 
 .navbar{
 	height:94px;
+	background:#3a2f27;
 	.navbar-right{
 		width:12%;
 		margin-top:2%;
 		.log-in-btn{
 			margin-right: 4%;
-			}
+			color:white;
+		}
 	}
+}
+
+h1, p.lead{
+	color:#3a2f27;
+	
+}
+
+#cancel-btn{
+	margin-left:4%;
 }

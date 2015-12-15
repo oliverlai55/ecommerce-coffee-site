@@ -2,7 +2,71 @@ doctype html
 html
 	head
 		title= title
+		script(src='http://code.jquery.com/jquery.js')
+			
 		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 		link(rel='stylesheet', href='/stylesheets/style.css')
 	body
+		#nav
+			.container
+				a#logo(href="/") DC Roasters
+
+				#right-wrapper
+					if (!username)
+						#nav-log-in
+							a(href="/login") Log In
+						#nav-subscribe
+							a.btn.btn-primary(href="/register") Subscribe
+					if (username)
+						#nav-log-in Welcome,
+							a(href="/myaccount") #{username}
+							a.btn.btn-primary(href="/logout") Logout
+
+		if (username)
+			#signup-wrapper
+				.container
+					ul.signup-progress
+						li
+							a(href="/").welcome 1. Welcome
+						li.active
+							a(href="/choices").options 2. Options
+						li
+							a(href="/delivery").delivery  3. Delivery
+						li
+							a(href="/payment").payment 4. Payment
+
 		block content
+
+
+	#footer
+		#footer-container.container
+			a#footer-logo(href="/") DC Roasters
+			ul
+				li
+					a(href="#") Blog
+				li
+					a(href="#") Contact
+				li
+					a(href="#") Suppliers
+			#copywrite
+				p &copy;2015 DC Coffee Roasters
+				ul
+					li
+						a(href="#") Terms
+					li
+						a(href="#") Privacy
+			#attributions
+				p Creative Commons images courtesy of:
+				ul
+					li
+						a(href="https://flic.kr/p/egJ7Bh") David Pacey
+					li
+						a(href="https://flic.kr/p/2GVL5f") Dave Bleasdale
+					li
+						a(href="https://flic.kr/p/ksMNUr") Dennis Tang
+					li
+						a(href="https://flic.kr/p/nfKZAo") mahmoud99725
+
+

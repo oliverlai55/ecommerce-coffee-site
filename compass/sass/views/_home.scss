@@ -1,0 +1,240 @@
+// -------------------------------
+// _HOME.SCSS
+// Home View Styling
+// -------------------------------
+
+h2.how-it-works_label {
+	text-align: center;
+	font-weight: 700;
+	font-size: 48px;
+	letter-spacing: 2px;
+	color: $green_dk;
+	margin-bottom: 30px;
+	text-transform: uppercase;
+}
+
+.how-it-works {
+	background: $white;
+	position: relative;
+	border-top: 1px solid darken($cream, 10%);
+	margin-bottom: 90px;
+
+	&:after {
+		content: '';
+		display: block;
+		border-top: 45px solid $cream;
+		border-left: 30px solid transparent;
+		border-right: 30px solid transparent;
+		height: 0;
+		width: 0;
+		position: absolute;
+		top: -1px;
+		left: 50%;
+		margin-left: -30px;
+	}
+
+	&:before {
+		content: '';
+		display: block;
+		border-top: 45px solid darken($cream, 10%);
+		border-left: 30px solid transparent;
+		border-right: 30px solid transparent;
+		height: 0;
+		width: 0;
+		position: absolute;
+		top: 0px;
+		left: 50%;
+		margin-left: -30px;
+	}
+
+}
+
+.how-it-works_inner {
+	position: relative;
+	padding: 90px 60px 60px;
+
+	.works-text {
+		width: 50%;
+		float: left;
+	}
+
+	h3 {
+		font-weight: 700;
+		font-size: 48px;
+		margin-bottom: 30px
+	}
+
+	p {
+		font-size: 18px;
+		margin-left: 60px;
+	}
+
+	.works-image {
+		float: left;
+		border: 15px solid $white;
+		width: 45%;
+		box-shadow: 3px 3px 10px rgba($black, 0.7);
+		@include rotate(-5deg);
+
+		img {
+			display: block;
+			max-width: 100%;
+			border: 1px solid $brown_lt;
+		}
+	}
+}
+
+.how-it-works-one {
+	background: image-url('CoffeeBags.jpg') center bottom no-repeat;
+	background-size: cover;
+	position: relative;
+	color: $white;
+	text-shadow: 3px 3px 10px rgba($black, 0.4);
+
+	&:before {
+		content: '';
+		display: block;
+		height: 46px;
+		width: 62px;
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		margin-left: -31px;
+		z-index: 1;
+		background: image-url('CoffeeBags_corner.png') center top no-repeat;
+	}
+}
+
+.how-it-works-two {
+	background: image-url('canvas.jpg') center bottom repeat;
+	position: relative;
+
+	.works-text {
+		float: right;
+	}
+
+	&:before {
+		content: '';
+		display: block;
+		height: 46px;
+		width: 62px;
+		position: absolute;
+		top: 100%;
+		margin-top: -1px;
+		left: 50%;
+		margin-left: -31px;
+		z-index: 1;
+		background: image-url('canvas_corner.png') center top no-repeat;
+	}
+}
+
+.how-it-works-three {
+	background: image-url('cupSteam.jpg') right bottom no-repeat $black;
+	background-size: contain;
+	position: relative;
+	color: $white;
+	text-shadow: 3px 3px 10px rgba($black, 0.7);
+
+	&:after {
+		content: '';
+		display: block;
+		border-top: 45px solid $black;
+		border-left: 30px solid transparent;
+		border-right: 30px solid transparent;
+		height: 0;
+		width: 0;
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		margin-left: -30px;
+		margin-top: -1px;
+	}
+
+	&:before {
+		content: '';
+		display: block;
+		border-top: 45px solid darken($cream, 10%);
+		border-left: 30px solid transparent;
+		border-right: 30px solid transparent;
+		height: 0;
+		width: 0;
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		margin-left: -30px;
+	}
+
+}
+
+
+.head-box {
+	background-color: $white;
+	padding: 30px;
+	margin: 30px auto 30px;
+	max-width: 800px;
+	border: 1px solid darken($cream, 10%);
+	border-radius: 5px;
+
+	h2 {
+		margin-top: 0;
+	    font-weight: 700;
+	    max-width: 80%;
+	}
+}
+
+
+.home-container {
+    position: relative;
+}
+
+
+#getStarted {
+	font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 30px;
+    text-align: center;
+    padding: 20px 60px;
+    background: $green_lt;
+    border-radius: 5px;
+	color: $white;
+	margin: 0 20px;
+	line-height: 1;
+
+	&:hover {
+		color: $white;
+		background: darken($green_lt, 3%);
+		text-decoration: none;
+	}
+}
+
+
+#login-wrapper {
+	background-color: rgba(200, 200, 200, 0.7);
+}
+
+
+@media (max-width: 600px) {
+	.how-it-works_inner {
+		padding: 60px 20px;
+
+		.works-text {
+			width: auto;
+			float: none;
+		}
+
+		h3 {
+			font-size: 36px;
+			margin-bottom: 15px;
+		}
+
+		p {
+			font-size: 14px;
+			margin-left: 0;
+		}
+		.works-image {
+			float: none;
+			width: 85%;
+			margin: 0 auto;
+		}
+	}
+}

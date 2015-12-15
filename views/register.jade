@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .container
+    #register-wrapper
+
+      h1 Register Page
+      if (err)
+        p.error
+          |#{err.message}
+
+      form(role='form', action="/register",method="post", style='max-width: 300px;')
+        .form-group
+            input.form-control(type='text', name="username", placeholder='Enter Username')
+        .form-group
+          input.form-control(type='password', name="password", placeholder='Password')
+        button.btn.btn-primary(type='submit') Submit
+        &nbsp;
+        a(href='/')
+          button.btn.btn-link(type="button") Cancel
