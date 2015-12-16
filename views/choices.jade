@@ -10,8 +10,30 @@ block content
 				#choices-frequency.choices-block
 					.row
 						.choices-image.col-sm-6
-							image goes here
-						.choices-image.col-sm-6
-							text input goes here
+							img(src='/images/calendar.png')
+						.col-sm-6
+							h2.choices-label 1. Frequency
+							.choices-lower-text-wrapper
+								.choices-lower-text How often would you like us to send you your coffee
+								select(id="frequency", name="frequency", class="form-control")
+									option(value="weekly") Weekly
+									option(value="weekly") Every Two Weeks
+									option(value="weekly") Monthly
+									option(value="weekly") Quarterly
+									option(value="weekly") Semi-Annually
+									option(value="weekly") Annually
+
+								.choices-help-text
 				#choices-quantity.choices-block
+					.row
+						.choices-image.col-sm-6
+							img(src='/images/food-scale.png')
+						.col-sm-6
+							text input goes here
 				#choices-grind.choices-block
+					.row
+						.choices-image.col-sm-6
+							img(src='/images/beans.png')
+						.col-sm-6
+							text input goes here
+

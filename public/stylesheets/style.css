@@ -631,3 +631,18 @@ h2.how-it-works_label {
   line-height: 1.4;
   text-align: center;
 }
+/* line 21, ../../compass/sass/views/_choices.scss */
+#plan-wrapper .choices-image {
+  text-align: center;
+}
+/* line 23, ../../compass/sass/views/_choices.scss */
+#plan-wrapper .choices-image img {
+  max-width: 100%;
+}
+/* line 27, ../../compass/sass/views/_choices.scss */
+#plan-wrapper .choices-block {
+  border: 1px solid #d8d3c8;
+  border-radius: 5px;
+  margin: 30px auto;
+  padding: 30px;
+}
