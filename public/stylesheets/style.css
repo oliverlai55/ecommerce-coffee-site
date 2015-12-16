@@ -1,3 +1,29 @@
+/* line 6, ../../compass/sass/layout/_layout.scss */
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #3a2f27;
+  background: #edebe6;
+  font-size: 14px;
+  padding-top: 85px;
+  min-width: 320px;
+}
+
+/* line 16, ../../compass/sass/layout/_layout.scss */
+.cta-container {
+  text-align: center;
+  margin: 30px auto;
+}
+/* line 20, ../../compass/sass/layout/_layout.scss */
+.cta-container a {
+  display: inline-block;
+}
+
+/* line 25, ../../compass/sass/layout/_layout.scss */
+.error {
+  font-style: italic;
+  color: #dc0707;
+}
+
 /* line 6, ../../compass/sass/layout/_header.scss */
 #header {
   background: url('../images/CupInBeans.jpg?1450132611') no-repeat center;
@@ -262,6 +288,87 @@
     border: none;
   }
 }
+/* line 6, ../../compass/sass/layout/_footer.scss */
+#footer {
+  font-size: 14px;
+  background: #3a2f27;
+  clear: both;
+  overflow: hidden;
+  margin-top: 70px;
+  padding: 25px 0;
+  border-top: 1px solid #a08855;
+}
+
+/* line 16, ../../compass/sass/layout/_footer.scss */
+#footer-logo {
+  display: block;
+  width: 200px;
+  height: 0;
+  padding-top: 124px;
+  overflow: hidden;
+  margin: 0 auto;
+  background: url('../images/dc_roasters_200x124_lt.png?1450132611') no-repeat;
+}
+
+/* line 26, ../../compass/sass/layout/_footer.scss */
+#footer-container {
+  color: #fff;
+  text-align: center;
+}
+/* line 30, ../../compass/sass/layout/_footer.scss */
+#footer-container p {
+  width: 60%;
+  margin: 0 auto;
+}
+/* line 35, ../../compass/sass/layout/_footer.scss */
+#footer-container ul {
+  width: 60%;
+  margin: 0 auto 25px;
+  padding: 25px 0;
+  border-bottom: 1px solid #58483c;
+}
+/* line 40, ../../compass/sass/layout/_footer.scss */
+#footer-container ul li {
+  display: inline;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 46, ../../compass/sass/layout/_footer.scss */
+#footer-container ul li a {
+  font-size: 16px;
+  color: #3a2f27;
+  text-transform: lowercase;
+  display: inline-block;
+  padding: 0 10px;
+  color: #fff;
+}
+
+/* line 59, ../../compass/sass/layout/_footer.scss */
+#copywrite ul {
+  border: none;
+  padding: 0;
+}
+
+/* line 66, ../../compass/sass/layout/_footer.scss */
+#attributions p {
+  color: #776050;
+  font-size: 12px;
+  margin: 0 auto;
+  text-align: center;
+}
+/* line 72, ../../compass/sass/layout/_footer.scss */
+#attributions ul {
+  border: none;
+  padding-top: 10px;
+  padding: 0;
+}
+/* line 79, ../../compass/sass/layout/_footer.scss */
+#attributions ul li a {
+  color: #776050;
+  font-size: 12px;
+}
+
 /* line 6, ../../compass/sass/views/_home.scss */
 h2.how-it-works_label {
   text-align: center;
@@ -504,29 +611,4 @@ h2.how-it-works_label {
     width: 85%;
     margin: 0 auto;
   }
-}
-/* line 23, ../../compass/sass/style.scss */
-.navbar {
-  height: 94px;
-  background: #3a2f27;
-}
-/* line 26, ../../compass/sass/style.scss */
-.navbar .navbar-right {
-  width: 12%;
-  margin-top: 2%;
-}
-/* line 29, ../../compass/sass/style.scss */
-.navbar .navbar-right .log-in-btn {
-  margin-right: 4%;
-  color: white;
-}
-
-/* line 36, ../../compass/sass/style.scss */
-h1, p.lead {
-  color: #3a2f27;
-}
-
-/* line 41, ../../compass/sass/style.scss */
-#cancel-btn {
-  margin-left: 4%;
 }

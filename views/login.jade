@@ -1,24 +1,24 @@
 extends layout
 
 block content
-	nav.navbar.navbar-default
-		.container
-			.navbar-header
-				a.navbar-brand(href="#")
-					img(src='./images/dc_roasters_105x65_lt.png')
-			ul.nav.navbar-nav.navbar-right
-				lia.log-in-btn(href='#') log in
-				button.btn.btn-primary(type='submit') Subscribe
 	.container
-		//- div with class of container
-		h1 Login Page
-		p.lead Please enter your username and password below.
-		br
-		form.col-sm-4#login-form(role='form', action='/login', method='post')
-			.form-group
-				input.form-control(type='text', name='username', placeholder='Enter Your Username')
-			.form-group
-				input.form-control(type='password', name='password', placeholder='Enter Your Password')
-			button.btn.btn-primary(type='submit') Submit
-			a(href='/')
-				button#cancel-btn.btn.btn-primary(type='button') Cancel
+		#plan-wrapper
+			if (user)
+				p You already logged in as #{user.username}.
+				a(href="/logout") Click here to Logout
+			if (!user)
+				h1 Login Page
+				if (failed)
+					p.lead #{failed}
+				if (!failed)
+					p.lead Please enter your username and password to login.
+				br
+				form(role='form', action='/login', method='post', style='max-width: 300px;')
+					.form-group
+						input.form-control(type='text', name='username', placeholder='Enter Your Username')
+					.form-group
+						input.form-control(type='password', name='password', placeholder='Password')
+					button.btn.btn-primary(type='submit') Submit
+					&nbsp;
+					a(href='/')
+						button.btn.btn-link(type='button') Cancel

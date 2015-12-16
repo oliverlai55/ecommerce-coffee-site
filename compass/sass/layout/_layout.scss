@@ -3,3 +3,26 @@
 // Global Layout styles
 // -------------------------------
 
+body {
+	// background-image: url('/images/Coffee-1920x1200.jpg');
+	font-family: 'Roboto', sans-serif;
+	color: $brown_dk;
+	background: $cream;
+	font-size: 14px;
+	padding-top: 85px;
+	min-width: 320px;
+}
+
+.cta-container {
+	text-align: center;
+	margin: 30px auto;
+
+	a {
+		display: inline-block;
+	}
+}
+
+.error {
+	font-style: italic;
+	color: $red;
+}

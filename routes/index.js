@@ -8,13 +8,16 @@ router.get('/', function(req, res, next) {
   res.render('index', { username : req.session.username });
 });
 
-// //REGISTER GET
+//////REGISTER GET////////
 router.get('/register', function(req, res, next){
 	res.render('register',{ });
 });
 
+////////////////REGISTER////////////////
 //REGISTER POST when user submits it will go through this route .post
+//it POST TO the register page
 router.post('/register', function(req, res, next){
+	//the mongo statement to insert the new vars into the db
 	Account.register(new Account(
 		{username: req.body.username}),
 		//from the body parser module in app.js
@@ -23,20 +26,20 @@ router.post('/register', function(req, res, next){
 		function(error, account){
 			if(error){
 				console.log(error);
-				return res.render('index');
+				return res.render('register', { error : error });
 			}else{
 				passport.authenticate('local')(req, res, function(){
 					//using the local method to authenticate
 					req.session.username = req.body.username;
 					//fast way to get username w/o getting in db
-					res.redirect('/')
-				})
+					res.render('index', { username : req.session.username });
+				});
 			}
 		});
 });
 
 
-//LOGIN GET
+/////LOGIN GET////
 //Get the login page
 router.get('/login', function(req, res) {
 
@@ -96,7 +99,7 @@ router.get('/login', function(req, res) {
 
 
 
-// Logout
+//// Logout////
 router.get('/logout', function(req, res) {
 	req.logout();
 	req.session.destroy();
