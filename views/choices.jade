@@ -16,13 +16,14 @@ block content
 							.choices-lower-text-wrapper
 								.choices-lower-text How often would you like us to send you your coffee
 								select(id="frequency", name="frequency", class="form-control")
-									option(value="weekly") Weekly
-									option(value="biweekly") Every Two Weeks
-									option(value="monthly") Monthly
-									option(value="quarterly") Quarterly
-									option(value="semiannually") Semi-Annually
-									option(value="annually") Annually
+									option(value="weekly", selected=(frequency=='weekly')) Weekly
+									option(value="biweekly", selected=(frequency=='biweekly')) Every Two Weeks
+									option(value="monthly", selected=(frequency=='monthly')) Monthly
+									option(value="quarterly", selected=(frequency=='quarterly')) Quarterly
+									option(value="semiannually", selected=(frequency=='semiannually')) Semi-Annually
+									option(value="annually", selected=(frequency=='annually')) Annually
 								.choices-help-text You can cancel or skip anytime.
+
 
 
 				#choices-quantity.choices-block
@@ -44,12 +45,15 @@ block content
 							h2.choices-label 3. Grind Type
 							.choices-lower-text-wrapper
 								.choices-lower-text How do you like your grinds?
+								- console.log("====jade====")
+								- console.log(grind)
+								- console.log(frequency)
 								select(id="grind", name="grind", class="form-control")
-									option(value="extraCoarse") Extra Coarse
-									option(value="coarse") Coarse
-									option(value="mediumCoarse") Medium Coarse
-									option(value="fine") Fine
-									option(value="veryFine") Very Fine
+									option(value="extraCoarse", selected=(grind=='extraCoarse')) Extra Coarse
+									option(value="coarse", selected=(grind=='coarse')) Coarse
+									option(value="mediumCoarse", selected=(grind=='mediumCoarse')) Medium Coarse
+									option(value="fine", selected=(grind=='fine')) Fine
+									option(value="veryFine", selected=(grind=='veryFine')) Very Fine
 
 								.choices-help-text You can cancel or skip anytime.
-						input.btn.btn-primary.btn-lg(type="submit", name="submit")
+				input.btn.btn-primary.btn-lg(type="submit", name="submit")

@@ -154,7 +154,11 @@ router.get('/choices', function (req, res, next){
 				var currPounds = doc.pounds ? doc.pounds : undefined
 			//ternary conditional
 			// currGrind will set to doc.grind if true, or undefined if false
-
+				console.log(currGrind)
+				console.log("===========")
+				console.log(currFrequency)
+				console.log("===========")
+				//render the choices view
 				res.render('choices',{
 				 username : req.session.username,
 				 grind : currGrind,
@@ -176,10 +180,15 @@ router.post('/choices', function (req, res, next){
 		var newGrind = req.body.grind;
 		var newFrequency = req.body.frequency;
 		var newPounds = req.body.quarterPounds;
+		console.log("=====freq in post======")
+		console.log(newFrequency);
+		console.log(req.body.frequency);
 
 		Account.findOneAndUpdate(
 			{ username: req.session.username },
-			{ grind: newGrind },
+			{ pounds: newPounds,
+			 frequency: newFrequency,
+			 grind: newGrind },
 			{ upsert: true },
 				//it means if it doesn't exist, creat it, or update it
 			function (err, account){
@@ -194,39 +203,39 @@ router.post('/choices', function (req, res, next){
 			}
 
 		)
-		Account.findOneAndUpdate(
-			{ username: req.session.username },
-			{ frequency: newFrequency },
-			{ upsert: true },
-				//it means if it doesn't exist, creat it, or update it
-			function (err, account){
-				if (err) {
-					res.send("There was an error saving your preferences.  Please re-enter or send this error to our help team: " + err)
-				}else{
-					console.log("==========")
-					console.log(account)
-					console.log("==========")
-					account.save;
-				}
-			}
+		// Account.findOneAndUpdate(
+		// 	{ username: req.session.username },
+		// 	{ frequency: newFrequency },
+		// 	{ upsert: true },
+		// 		//it means if it doesn't exist, creat it, or update it
+		// 	function (err, account){
+		// 		if (err) {
+		// 			res.send("There was an error saving your preferences.  Please re-enter or send this error to our help team: " + err)
+		// 		}else{
+		// 			console.log("==========")
+		// 			console.log(account)
+		// 			console.log("==========")
+		// 			account.save;
+		// 		}
+		// 	}
 
-		)
-		Account.findOneAndUpdate(
-			{ username: req.session.username },
-			{ pounds: newPounds },
-			{ upsert: true },
-				//it means if it doesn't exist, creat it, or update it
-			function (err, account){
-				if (err) {
-					res.send("There was an error saving your preferences.  Please re-enter or send this error to our help team: " + err)
-				}else{
-					console.log("==========")
-					console.log(account)
-					console.log("==========")
-					account.save;
-				}
-			}
-		)
+		// )
+		// Account.findOneAndUpdate(
+		// 	{ username: req.session.username },
+		// 	{ pounds: newPounds },
+		// 	{ upsert: true },
+		// 		//it means if it doesn't exist, creat it, or update it
+		// 	function (err, account){
+		// 		if (err) {
+		// 			res.send("There was an error saving your preferences.  Please re-enter or send this error to our help team: " + err)
+		// 		}else{
+		// 			console.log("==========")
+		// 			console.log(account)
+		// 			console.log("==========")
+		// 			account.save;
+		// 		}
+		// 	}
+		// )
 		res.redirect('/delivery');
 	}
 
