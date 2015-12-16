@@ -147,7 +147,22 @@ router.get('/choices', function (req, res, next){
 	if(req.session.username){
 		//they do belong here, proceed with page
 		//check and see if they have any set preferences already
-		res.render('choices',{ username : req.session.username });
+		Account.findOne({ username: req.session.username },
+			function (err, doc){
+				var currGrind = doc.grind ? doc.grind : undefined
+				var currFrequency = doc.frequency ? doc.frequency : undefined
+				var currPounds = doc.pounds ? doc.pounds : undefined
+			//ternary conditional
+			// currGrind will set to doc.grind if true, or undefined if false
+
+				res.render('choices',{
+				 username : req.session.username,
+				 grind : currGrind,
+				 frequency : currFrequency,
+				 pounds : currPounds 
+				});
+			});
+
 	}else{
 		res.redirect('/')
 	}
@@ -158,16 +173,6 @@ router.get('/choices', function (req, res, next){
 router.post('/choices', function (req, res, next){
 	//see if the person is logged in
 	if(req.session.username){
-		Account.findOne({username: req.session.username},
-		function (err, doc){
-			// document
-			//when data exsists, find it here
-			var grind = doc.grind;
-			var frequency = doc.frequency;
-			var pounds = doc.quarterPounds;
-
-		});
-
 		var newGrind = req.body.grind;
 		var newFrequency = req.body.frequency;
 		var newPounds = req.body.quarterPounds;
@@ -181,6 +186,9 @@ router.post('/choices', function (req, res, next){
 				if (err) {
 					res.send("There was an error saving your preferences.  Please re-enter or send this error to our help team: " + err)
 				}else{
+					console.log("==========")
+					console.log(account)
+					console.log("==========")
 					account.save;
 				}
 			}
@@ -195,6 +203,9 @@ router.post('/choices', function (req, res, next){
 				if (err) {
 					res.send("There was an error saving your preferences.  Please re-enter or send this error to our help team: " + err)
 				}else{
+					console.log("==========")
+					console.log(account)
+					console.log("==========")
 					account.save;
 				}
 			}
@@ -209,15 +220,21 @@ router.post('/choices', function (req, res, next){
 				if (err) {
 					res.send("There was an error saving your preferences.  Please re-enter or send this error to our help team: " + err)
 				}else{
+					console.log("==========")
+					console.log(account)
+					console.log("==========")
 					account.save;
 				}
 			}
-
 		)
+		res.redirect('/delivery');
 	}
 
 });
 
+router.get('/delivery', function (req, res, next){
+	res.send("<h1>Welcome to the delivery page.</h1>");
+});
 
 
 
