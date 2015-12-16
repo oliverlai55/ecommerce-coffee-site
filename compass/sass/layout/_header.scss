@@ -110,7 +110,7 @@
     min-width: 320px;
 	color: $cream;
 	font-size: 16px;
-	text-transform: lowercase;
+	text-transform: none;
     background-color: $brown_dk;
     @include background-image(linear-gradient($brown_dk, lighten($brown_dk, 10%)));
     z-index: 1000;

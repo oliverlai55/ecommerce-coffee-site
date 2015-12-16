@@ -6,7 +6,7 @@ block content
 		#plan-wrapper
 			#choices-header Tell us what you want!!
 			#choices-sub-header Shipping is free and you can skip any week.
-			form(name="choices-form", action="/delivery", method="post")
+			form(name="choices-form", action="/choices", method="post")
 				#choices-frequency.choices-block
 					.row
 						.choices-image.col-sm-6
@@ -17,23 +17,39 @@ block content
 								.choices-lower-text How often would you like us to send you your coffee
 								select(id="frequency", name="frequency", class="form-control")
 									option(value="weekly") Weekly
-									option(value="weekly") Every Two Weeks
-									option(value="weekly") Monthly
-									option(value="weekly") Quarterly
-									option(value="weekly") Semi-Annually
-									option(value="weekly") Annually
+									option(value="biweekly") Every Two Weeks
+									option(value="monthly") Monthly
+									option(value="quarterly") Quarterly
+									option(value="semiannually") Semi-Annually
+									option(value="annually") Annually
+								.choices-help-text You can cancel or skip anytime.
 
-								.choices-help-text
+
 				#choices-quantity.choices-block
 					.row
 						.choices-image.col-sm-6
 							img(src='/images/food-scale.png')
 						.col-sm-6
-							text input goes here
+							h2.choices-label 2. Quantity
+							.choices-lower-text-wrapper
+								.choices-lower-text How many pounds (in increments of .25 lb) would you like each delivery?
+									input(type="number", step=.25, name="quarterPounds", placeholder=50)
+								.choices-help-text You can cancel or skip anytime.
+
 				#choices-grind.choices-block
 					.row
 						.choices-image.col-sm-6
 							img(src='/images/beans.png')
 						.col-sm-6
-							text input goes here
+							h2.choices-label 3. Grind Type
+							.choices-lower-text-wrapper
+								.choices-lower-text How do you like your grinds?
+								select(id="grind", name="grind", class="form-control")
+									option(value="extraCoarse") Extra Coarse
+									option(value="coarse") Coarse
+									option(value="mediumCoarse") Medium Coarse
+									option(value="fine") Fine
+									option(value="veryFine") Very Fine
 
+								.choices-help-text You can cancel or skip anytime.
+						input.btn.btn-primary.btn-lg(type="submit", name="submit")

@@ -59,6 +59,7 @@ router.get('/login', function(req, res) {
 	res.render('login', { });
 })
 
+/////////////////////////////
 /////////LOGIN POST//////////
 router.post('/login', function(req, res, next) {
 
@@ -146,13 +147,76 @@ router.get('/choices', function (req, res, next){
 	if(req.session.username){
 		//they do belong here, proceed with page
 		//check and see if they have any set preferences already
-		res.render('choices');
+		res.render('choices',{ username : req.session.username });
 	}else{
 		res.redirect('/')
 	}
 });
 
+/////////////////////////////
+//////CHOICES POST///////////
+router.post('/choices', function (req, res, next){
+	//see if the person is logged in
+	if(req.session.username){
+		Account.findOne({username: req.session.username},
+		function (err, doc){
+			// document
+			//when data exsists, find it here
+			var grind = doc.grind;
+			var frequency = doc.frequency;
+			var pounds = doc.quarterPounds;
 
+		});
+
+		var newGrind = req.body.grind;
+		var newFrequency = req.body.frequency;
+		var newPounds = req.body.quarterPounds;
+
+		Account.findOneAndUpdate(
+			{ username: req.session.username },
+			{ grind: newGrind },
+			{ upsert: true },
+				//it means if it doesn't exist, creat it, or update it
+			function (err, account){
+				if (err) {
+					res.send("There was an error saving your preferences.  Please re-enter or send this error to our help team: " + err)
+				}else{
+					account.save;
+				}
+			}
+
+		)
+		Account.findOneAndUpdate(
+			{ username: req.session.username },
+			{ frequency: newFrequency },
+			{ upsert: true },
+				//it means if it doesn't exist, creat it, or update it
+			function (err, account){
+				if (err) {
+					res.send("There was an error saving your preferences.  Please re-enter or send this error to our help team: " + err)
+				}else{
+					account.save;
+				}
+			}
+
+		)
+		Account.findOneAndUpdate(
+			{ username: req.session.username },
+			{ pounds: newPounds },
+			{ upsert: true },
+				//it means if it doesn't exist, creat it, or update it
+			function (err, account){
+				if (err) {
+					res.send("There was an error saving your preferences.  Please re-enter or send this error to our help team: " + err)
+				}else{
+					account.save;
+				}
+			}
+
+		)
+	}
+
+});
 
 
 
