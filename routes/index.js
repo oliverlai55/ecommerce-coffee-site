@@ -48,7 +48,7 @@ router.get('/login', function(req, res) {
 
 	//the user is already logged in
 	if(req.session.username){
-		res.redirect('/index');
+		res.redirect('/choices');
 	}
 	//req.query.login pulls the query parameters right out of the http headers!
     //They are here and failed a login
@@ -59,35 +59,76 @@ router.get('/login', function(req, res) {
 	res.render('login', { });
 })
 
-
 /////////LOGIN POST//////////
 router.post('/login', function(req, res, next) {
 
-      passport.authenticate('local', function(err, user, info) {
-        if (err) {
-          return next(err); // will generate a 500 error
-        }
-        // Generate a JSON response reflecting authentication status
-        if (! user) {
-          return res.redirect('/login?failedlogin=1');
-        }
-        if (user){
-            // Passport session setup.
-            passport.serializeUser(function(user, done) {
-              console.log("serializing " + user.username);
-              done(null, user);
-            });
+   if(req.body.getStarted){
+       Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
+           if (err) {
+               return res.render('register', { err : err });
+           }
+           if(!err)
+           passport.authenticate('local')(req, res, function () {
+               req.session.username = req.body.username;
+               res.render('choices', { username : req.session.username });
+           });
+       });        
+   }
 
-            passport.deserializeUser(function(obj, done) {
-              console.log("deserializing " + obj);
-              done(null, obj);
-            });        
-            req.session.username = user.username;
-        }
+   if (!req.body.getStarted){
+     passport.authenticate('local', function(err, user, info) {
+       if (err) {
+         return next(err); // will generate a 500 error
+       }
+       // Generate a JSON response reflecting authentication status
+       if (! user) {
+         return res.redirect('/login?failedlogin=1');
+       }
+       if (user){
+           // Passport session setup.
+           passport.serializeUser(function(user, done) {
+             console.log("serializing " + user.username);
+             done(null, user);
+           });
 
-        return res.redirect('/');
-      })(req, res, next);
+           passport.deserializeUser(function(obj, done) {
+             console.log("deserializing " + obj);
+             done(null, obj);
+           });        
+           req.session.username = user.username;
+       }
+
+       return res.redirect('/choices');
+     })(req, res, next);
+   }
 });
+// router.post('/login', function(req, res, next) {
+
+//       passport.authenticate('local', function(err, user, info) {
+//         if (err) {
+//           return next(err); // will generate a 500 error
+//         }
+//         // Generate a JSON response reflecting authentication status
+//         if (! user) {
+//           return res.redirect('/login?failedlogin=1');
+//         }
+//         if (user){
+//             // Passport session setup.
+//             passport.serializeUser(function(user, done) {
+//               console.log("serializing " + user.username);
+//               done(null, user);
+//             });
+
+//             passport.deserializeUser(function(obj, done) {
+//               console.log("deserializing " + obj);
+//               done(null, obj);
+//             });        
+//             req.session.username = user.username;
+//         }
+
+//         return res.redirect('/');
+//       })(req, res, next);
+// });
 
 
 //// Logout////

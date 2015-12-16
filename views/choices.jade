@@ -1,0 +1,17 @@
+extends layout
+
+block content
+
+	#choices.container
+		#plan-wrapper
+			#choices-header Tell us what you want!!
+			#choices-sub-header Shipping is free and you can skip any week.
+			form(name="choices-form", action="/delivery", method="post")
+				#choices-frequency.choices-block
+					.row
+						.choices-image.col-sm-6
+							image goes here
+						.choices-image.col-sm-6
+							text input goes here
+				#choices-quantity.choices-block
+				#choices-grind.choices-block

@@ -612,3 +612,22 @@ h2.how-it-works_label {
     margin: 0 auto;
   }
 }
+/* line 6, ../../compass/sass/views/_choices.scss */
+#plan-wrapper {
+  margin-top: 60px;
+}
+/* line 8, ../../compass/sass/views/_choices.scss */
+#plan-wrapper #choices-header {
+  margin: 0 0 8px;
+  font-size: 32px;
+  line-height: 1.2;
+  text-align: center;
+}
+/* line 14, ../../compass/sass/views/_choices.scss */
+#plan-wrapper #choices-sub-header {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.4;
+  text-align: center;
+}
