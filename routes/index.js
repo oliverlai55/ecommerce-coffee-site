@@ -220,7 +220,7 @@ router.get('/delivery', function (req, res, next){
 				var currDeliveryDate = doc.deliveryDate ? doc.deliveryDate : undefined
 				res.render( 'delivery', {
 					username: req.session.username,
-					fullName: fullName,
+					fullName: currFullName,
 					address1: currAddress1,
 					address2: currAddress2,
 					city: currCity,
@@ -273,14 +273,55 @@ router.post('/delivery', function (req, res, next){
 	}
 })
 
-router.get('/email', function (req, res, next){
-	var transporter = nodemailer.createTransport({
-		service = 'Gmail',
-		auth: {
-			user: vars.email,
-			pass: vars.password
+// router.get('/email', function (req, res, next){
+// 	var transporter = nodemailer.createTransport({
+// 		service = 'Gmail',
+// 		auth: {
+// 			user: vars.email,
+// 			pass: vars.password
+// 		}
+// 	});
+// 	var text = "This is a test email sent from my node server";
+// 	var mailOptions = {
+// 		from: 'Oliver Lai <oliverlai55@gmail.com>',
+// 		to: 'Oliver Lai <oliverlai55@gmail.com>',
+// 		subject: 'This is a test subject',
+// 		text: text
+// 	}
+// 	transporter.sendMail(mailOptions, function(error, info){
+// 		if(error){
+// 			console.log(error);
+// 			res.json({response: error});
+
+// 		}else{
+// 			res.json({respond: "success"});
+// 			console.log("message was successfully send, response was " + info.response);
+// 		}
+// 	})
+// });
+
+router.post('/payment', function (req, res, next){
+	res.json(req.body);
+
+	stripe.charges.create({
+		amount: 400,
+		currency: "usd",
+		source: req.body.stripeToken,
+		//obtained from stripe
+		description: "Charge for " + req.body.stripeEmail
+	}, function (err, charge){
+		//asynchronously called
+		console.log(charge)
+		if(err){
+			res.send('you got an error.' + err)
+		}else{
+			res.redirect('/thankyou')
 		}
-	})
+	});
+});
+
+router.get('/contact', function (req, res, next){
+	res.render('contact');
 });
 
 module.exports = router;

@@ -2,7 +2,7 @@ extends layout
 
 block content
 	#delivery.container
-		#plan-wrapper
+		#delivery-wrapper
 			h1#delivery-header Please enter your shipping info
 			h3#delivery-subheader We treat your coffee like gold. Like black gold (not Texas tea). It will be shipped safely and is guaderanteed.
 			form(name="delivery-form", action="/delivery", method="post")
@@ -24,63 +24,65 @@ block content
 						label(for="cityInput") City
 						input.form-control(type='text', name='city', placeholder="City", value='#{city}')
 						<h4>City, town, etc.
+					#region-wrapper
+						label(for='stateInput') State / Province / Region
 						select.form-control(name="state", type='text')
-	                        option(value='AL', selected=(state == 'AL')? true: false) Alabama
-	                        option(value='AK', selected=(state == 'AK')? true: false) Alaska
-	                        option(value='AZ', selected=(state == 'AZ')? true: false) Arizona
-	                        option(value='AR', selected=(state == 'AR')? true: false) Arkansas
-	                        option(value='CA', selected=(state == 'CA')? true: false) California
-	                        option(value='CO', selected=(state == 'CO')? true: false) Colorado
-	                        option(value='CT', selected=(state == 'CT')? true: false) Connecticut
-	                        option(value='DE', selected=(state == 'DE')? true: false) Delaware
-	                        option(value='FL', selected=(state == 'FL')? true: false) Florida
-	                        option(value='GA', selected=(state == 'GA')? true: false) Georgia
-	                        option(value='HI', selected=(state == 'HI')? true: false) Hawaii
-	                        option(value='ID', selected=(state == 'ID')? true: false) Idaho
-	                        option(value='IL', selected=(state == 'IL')? true: false) Illinois
-	                        option(value='IN', selected=(state == 'IN')? true: false) Indiana
-	                        option(value='IA', selected=(state == 'IA')? true: false) Iowa
-	                        option(value='KS', selected=(state == 'KS')? true: false) Kansas
-	                        option(value='KY', selected=(state == 'KY')? true: false) Kentucky
-	                        option(value='LA', selected=(state == 'LA')? true: false) Louisiana
-	                        option(value='ME', selected=(state == 'ME')? true: false) Maine
-	                        option(value='MD', selected=(state == 'MD')? true: false) Maryland
-	                        option(value='MA', selected=(state == 'MA')? true: false) Michigan
-	                        option(value='MN', selected=(state == 'MN')? true: false) Minnesota
-	                        option(value='MS', selected=(state == 'MS')? true: false) Mississippi
-	                        option(value='MO', selected=(state == 'MO')? true: false) Missouri
-	                        option(value='MT', selected=(state == 'MT')? true: false) Montana
-	                        option(value='NE', selected=(state == 'NE')? true: false) Nebraska
-	                        option(value='NV', selected=(state == 'NV')? true: false) Nevada
-	                        option(value='NH', selected=(state == 'NH')? true: false) New Hampshire
-	                        option(value='NJ', selected=(state == 'NJ')? true: false) New Jersey
-	                        option(value='NM', selected=(state == 'NM')? true: false) New Mexico
-	                        option(value='NY', selected=(state == 'NY')? true: false) New York
-	                        option(value='NC', selected=(state == 'NC')? true: false) North Carolina
-	                        option(value='ND', selected=(state == 'ND')? true: false) North Dakota
-	                        option(value='OH', selected=(state == 'OH')? true: false) Ohio
-	                        option(value='OK', selected=(state == 'OK')? true: false) Oklahoma
-	                        option(value='OR', selected=(state == 'OR')? true: false) Oregon
-	                        option(value='PA', selected=(state == 'PA')? true: false) Pennsylvania
-	                        option(value='RI', selected=(state == 'RI')? true: false) Rhode Island
-	                        option(value='SC', selected=(state == 'SC')? true: false) South Carolina
-	                        option(value='SD', selected=(state == 'SD')? true: false) South Dakota
-	                        option(value='TN', selected=(state == 'TN')? true: false) Tennessee
-	                        option(value='TX', selected=(state == 'TX')? true: false) Texas
-	                        option(value='UT', selected=(state == 'UT')? true: false) Utah
-	                        option(value='VT', selected=(state == 'VT')? true: false) Vermont
-	                        option(value='VA', selected=(state == 'VA')? true: false) Virginia
-	                        option(value='WA', selected=(state == 'WA')? true: false) Washington
-	                        option(value='WV', selected=(state == 'WV')? true: false) West Virginia
-	                        option(value='WI', selected=(state == 'WI')? true: false) Wisconsin
-	                        option(value='WY', selected=(state == 'WY')? true: false) Wyoming
-	                        option(value='DC', selected=(state == 'DC')? true: false) District of Columbia
-	                    label(for='zipCodeInput') Zip Code
-                    	input.form-control.short(name="zipCode", type='number', placeholder='Zip Code', value='#{zipCode}')
-                    	label(for='deliveryDate') Date of next delivery (this will be your first delivery if you are just signing up) 
-                    	input.form-control.short(name="deliveryDate", type='text', value='#{deliveryDate}')
-                    #submit-btn-wrap
-                    input.submit-btn.btn.btn-primary.btn-lg(type='submit', name='submit')
+							option(value='AL', selected=(state == 'AL')? true: false) Alabama
+							option(value='AK', selected=(state == 'AK')? true: false) Alaska
+							option(value='AZ', selected=(state == 'AZ')? true: false) Arizona
+							option(value='AR', selected=(state == 'AR')? true: false) Arkansas
+							option(value='CA', selected=(state == 'CA')? true: false) California
+							option(value='CO', selected=(state == 'CO')? true: false) Colorado
+							option(value='CT', selected=(state == 'CT')? true: false) Connecticut
+							option(value='DE', selected=(state == 'DE')? true: false) Delaware
+							option(value='FL', selected=(state == 'FL')? true: false) Florida
+							option(value='GA', selected=(state == 'GA')? true: false) Georgia
+							option(value='HI', selected=(state == 'HI')? true: false) Hawaii
+							option(value='ID', selected=(state == 'ID')? true: false) Idaho
+							option(value='IL', selected=(state == 'IL')? true: false) Illinois
+							option(value='IN', selected=(state == 'IN')? true: false) Indiana
+							option(value='IA', selected=(state == 'IA')? true: false) Iowa
+							option(value='KS', selected=(state == 'KS')? true: false) Kansas
+							option(value='KY', selected=(state == 'KY')? true: false) Kentucky
+							option(value='LA', selected=(state == 'LA')? true: false) Louisiana
+							option(value='ME', selected=(state == 'ME')? true: false) Maine
+							option(value='MD', selected=(state == 'MD')? true: false) Maryland
+							option(value='MA', selected=(state == 'MA')? true: false) Michigan
+							option(value='MN', selected=(state == 'MN')? true: false) Minnesota
+							option(value='MS', selected=(state == 'MS')? true: false) Mississippi
+							option(value='MO', selected=(state == 'MO')? true: false) Missouri
+							option(value='MT', selected=(state == 'MT')? true: false) Montana
+							option(value='NE', selected=(state == 'NE')? true: false) Nebraska
+							option(value='NV', selected=(state == 'NV')? true: false) Nevada
+							option(value='NH', selected=(state == 'NH')? true: false) New Hampshire
+							option(value='NJ', selected=(state == 'NJ')? true: false) New Jersey
+							option(value='NM', selected=(state == 'NM')? true: false) New Mexico
+							option(value='NY', selected=(state == 'NY')? true: false) New York
+							option(value='NC', selected=(state == 'NC')? true: false) North Carolina
+							option(value='ND', selected=(state == 'ND')? true: false) North Dakota
+							option(value='OH', selected=(state == 'OH')? true: false) Ohio
+							option(value='OK', selected=(state == 'OK')? true: false) Oklahoma
+							option(value='OR', selected=(state == 'OR')? true: false) Oregon
+							option(value='PA', selected=(state == 'PA')? true: false) Pennsylvania
+							option(value='RI', selected=(state == 'RI')? true: false) Rhode Island
+							option(value='SC', selected=(state == 'SC')? true: false) South Carolina
+							option(value='SD', selected=(state == 'SD')? true: false) South Dakota
+							option(value='TN', selected=(state == 'TN')? true: false) Tennessee
+							option(value='TX', selected=(state == 'TX')? true: false) Texas
+							option(value='UT', selected=(state == 'UT')? true: false) Utah
+							option(value='VT', selected=(state == 'VT')? true: false) Vermont
+							option(value='VA', selected=(state == 'VA')? true: false) Virginia
+							option(value='WA', selected=(state == 'WA')? true: false) Washington
+							option(value='WV', selected=(state == 'WV')? true: false) West Virginia
+							option(value='WI', selected=(state == 'WI')? true: false) Wisconsin
+							option(value='WY', selected=(state == 'WY')? true: false) Wyoming
+							option(value='DC', selected=(state == 'DC')? true: false) District of Columbia
+						label(for='zipCodeInput') Zip Code
+						input.form-control.short(name="zipCode", type='number', placeholder='Zip Code', value='#{zipCode}')
+						label(for='deliveryDate') Date of next delivery (this will be your first delivery if you are just signing up) 
+						input.form-control.short(name="deliveryDate", type='text', value='#{deliveryDate}')
+					#submit-btn-wrap
+						input.submit-btn.btn.btn-primary.btn-lg(type='submit', name='submit')
 
 
 
