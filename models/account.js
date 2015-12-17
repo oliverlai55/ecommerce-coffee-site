@@ -6,7 +6,7 @@ var Account = new Schema({
   username: String,
   password: String,
   grind: String,
-  freqeuncy: String,
+  frequency: String,
   pounds: String
 });
 

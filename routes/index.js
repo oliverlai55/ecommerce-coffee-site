@@ -2,6 +2,8 @@ var express = require('express');
 var passport = require('passport');
 var Account = require('../models/account');
 var router = express.Router();
+var nodemailer = require('nodemailer');
+var vars = require('../config/vars.json');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -185,66 +187,100 @@ router.post('/choices', function (req, res, next){
 		console.log(req.body.frequency);
 
 		Account.findOneAndUpdate(
-			{ username: req.session.username },
-			{ pounds: newPounds,
-			 frequency: newFrequency,
-			 grind: newGrind },
-			{ upsert: true },
+			{ username : req.session.username },
+			{ pounds : newPounds,
+			 frequency : newFrequency,
+			 grind : newGrind },
+			{ upsert : true },
 				//it means if it doesn't exist, creat it, or update it
 			function (err, account){
 				if (err) {
 					res.send("There was an error saving your preferences.  Please re-enter or send this error to our help team: " + err)
 				}else{
-					console.log("==========")
-					console.log(account)
-					console.log("==========")
 					account.save;
 				}
 			}
-
 		)
-		// Account.findOneAndUpdate(
-		// 	{ username: req.session.username },
-		// 	{ frequency: newFrequency },
-		// 	{ upsert: true },
-		// 		//it means if it doesn't exist, creat it, or update it
-		// 	function (err, account){
-		// 		if (err) {
-		// 			res.send("There was an error saving your preferences.  Please re-enter or send this error to our help team: " + err)
-		// 		}else{
-		// 			console.log("==========")
-		// 			console.log(account)
-		// 			console.log("==========")
-		// 			account.save;
-		// 		}
-		// 	}
-
-		// )
-		// Account.findOneAndUpdate(
-		// 	{ username: req.session.username },
-		// 	{ pounds: newPounds },
-		// 	{ upsert: true },
-		// 		//it means if it doesn't exist, creat it, or update it
-		// 	function (err, account){
-		// 		if (err) {
-		// 			res.send("There was an error saving your preferences.  Please re-enter or send this error to our help team: " + err)
-		// 		}else{
-		// 			console.log("==========")
-		// 			console.log(account)
-		// 			console.log("==========")
-		// 			account.save;
-		// 		}
-		// 	}
-		// )
 		res.redirect('/delivery');
 	}
-
 });
 
+/////////////////////////////////
+////////DELIVERY GET/////////////
 router.get('/delivery', function (req, res, next){
-	res.send("<h1>Welcome to the delivery page.</h1>");
+	if(req.session.username){
+		Account.findOne({ username: req.session.username },
+			function (err, doc){
+				var currFullName = doc.fullName ? doc.fullName : undefined
+				var currAddress1 = doc.address1 ? doc.address1 : undefined
+				var currAddress2 = doc.address2 ? doc.address2 : undefined
+				var currCity = doc.city ? doc.city : undefined
+				var currState = doc.state ? doc.state : undefined
+				var currZipCode = doc.zipCode ? doc.zipCode : undefined
+				var currDeliveryDate = doc.deliveryDate ? doc.deliveryDate : undefined
+				res.render( 'delivery', {
+					username: req.session.username,
+					fullName: fullName,
+					address1: currAddress1,
+					address2: currAddress2,
+					city: currCity,
+					state: currState,
+					zipCode: currZipCode,
+					delivery: currDeliveryDate
+				});
+			});
+
+	}else{
+		res.redirect('/login')
+	}
 });
 
+////////////////////////////////
+/////////DELIVERY POST//////////
+router.post('/delivery', function (req, res, next){
+	if(req.session.username){
+		var newFullName = req.body.fullName
+		var newAddress1 = req.body.address1
+		var newAddress2 = req.body.address2
+		var newCity = req.body.city
+		var newState = req.body.state
+		var newZipCode = req.body,zipCode
+		var newDeliveryDate = req.body.deliveryDate
 
+		var updateList = {
+			fullName: newFullName,
+			address1: newAddress1,
+			addresss2: newAddresss2,
+			city: newCity,
+			state: newState,
+			zipCode: newzipCode,
+			deliveryDate: newDeliveryDate
+		}
+
+		Account.findOneAndUpdate({username: req.session.username},
+			updateList,
+			{upsert: true},
+			function (err, account){
+				if (err){
+					res.send('There was an error saving your preference. Please re-enter your order details. ERROR: ' + err)
+				}else{
+					account.save;
+				}
+			});
+			res.redirect('/')
+	}else{
+		res.redirect('/login');
+	}
+})
+
+router.get('/email', function (req, res, next){
+	var transporter = nodemailer.createTransport({
+		service = 'Gmail',
+		auth: {
+			user: vars.email,
+			pass: vars.password
+		}
+	})
+});
 
 module.exports = router;
