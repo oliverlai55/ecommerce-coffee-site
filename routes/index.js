@@ -5,7 +5,7 @@ var router = express.Router();
 var nodemailer = require('nodemailer');
 var vars = require('../config/vars.json');
 var stripe = require('stripe')(
-	'sk_test_2bbpfxzyNVOpMeqzxDIJ2jK8'
+	'sk_test_lGVN1R3LkUOb0w5PX7cV0JpS'
 );
 
 /* GET home page. */
@@ -355,7 +355,7 @@ router.post('/payment', function (req, res, next){
 		res.redirect('/login');
 	}else{
 
-		res.json(req.body);
+		// res.json(req.body);
 		stripe.charges.create({
 			amount: 400,
 			currency: "usd",
@@ -403,7 +403,7 @@ router.post('/payment', function (req, res, next){
 
 // });
 
-//////////////////////////////////
+////////////////////////////////////
 //////////Contact GET///////////////
 router.get('/contact', function (req, res, next){
 	res.render('contact');

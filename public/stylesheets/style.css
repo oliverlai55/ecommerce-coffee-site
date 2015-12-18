@@ -671,45 +671,93 @@ h2.how-it-works_label {
   margin-bottom: 70px;
 }
 
+/* line 7, ../../compass/sass/views/_payment.scss */
+#payment #payment-wrapper {
+  padding-top: 0px;
+}
+/* line 9, ../../compass/sass/views/_payment.scss */
+#payment #payment-wrapper h1 {
+  margin: 60px 0px 35px;
+}
+/* line 12, ../../compass/sass/views/_payment.scss */
+#payment #payment-wrapper #information-wrap {
+  border: 2px solid #d8d3c8;
+  border-radius: 5px;
+  padding: 35px 45px 40px;
+}
+/* line 18, ../../compass/sass/views/_payment.scss */
+#payment #payment-wrapper #information-wrap .section-wrap .section-header-wrap h2 {
+  float: left;
+  font-weight: 700;
+}
+/* line 22, ../../compass/sass/views/_payment.scss */
+#payment #payment-wrapper #information-wrap .section-wrap .section-header-wrap a {
+  float: left;
+  margin-top: 30px;
+  margin-left: 20px;
+  font-weight: 600;
+}
+/* line 29, ../../compass/sass/views/_payment.scss */
+#payment #payment-wrapper #information-wrap .section-wrap .choice {
+  overflow: hidden;
+}
+/* line 31, ../../compass/sass/views/_payment.scss */
+#payment #payment-wrapper #information-wrap .section-wrap .choice p {
+  font-size: 14px;
+  font-weight: 600;
+  padding-left: 0px;
+  margin-bottom: 2px;
+}
+/* line 37, ../../compass/sass/views/_payment.scss */
+#payment #payment-wrapper #information-wrap .section-wrap .choice.delivery {
+  margin-top: 35px;
+}
+/* line 44, ../../compass/sass/views/_payment.scss */
+#payment #payment-wrapper #btn-wrap {
+  text-align: center;
+  margin-top: 45px;
+  margin-bottom: 60px;
+}
+
 /* line 8, ../../compass/sass/views/_account.scss */
-#account #account-wrapper h1 {
+#account-wrapper h1 {
   margin: 60px 0px 35px;
 }
 /* line 11, ../../compass/sass/views/_account.scss */
-#account #account-wrapper #information-wrap {
-  border: 2px solid #ada48d;
+#account-wrapper #information-wrap {
+  border: 2px solid #d8d3c8;
   border-radius: 5px;
   padding: 35px 45px 40px;
 }
 /* line 17, ../../compass/sass/views/_account.scss */
-#account #account-wrapper #information-wrap .section-wrap .section-header-wrap h2 {
+#account-wrapper #information-wrap .section-wrap .section-header-wrap h2 {
   float: left;
   font-weight: 700;
 }
 /* line 21, ../../compass/sass/views/_account.scss */
-#account #account-wrapper #information-wrap .section-wrap .section-header-wrap a {
+#account-wrapper #information-wrap .section-wrap .section-header-wrap a {
   float: left;
   margin-top: 30px;
   margin-left: 20px;
   font-weight: 600;
 }
 /* line 28, ../../compass/sass/views/_account.scss */
-#account #account-wrapper #information-wrap .section-wrap .choice {
+#account-wrapper #information-wrap .section-wrap .choice {
   overflow: hidden;
 }
 /* line 30, ../../compass/sass/views/_account.scss */
-#account #account-wrapper #information-wrap .section-wrap .choice p {
+#account-wrapper #information-wrap .section-wrap .choice p {
   font-size: 14px;
   font-weight: 600;
   padding-left: 0px;
   margin-bottom: 2px;
 }
 /* line 36, ../../compass/sass/views/_account.scss */
-#account #account-wrapper #information-wrap .section-wrap .choice.delivery {
+#account-wrapper #information-wrap .section-wrap .choice.delivery {
   margin-top: 35px;
 }
 /* line 43, ../../compass/sass/views/_account.scss */
-#account #account-wrapper #btn-wrap {
+#account-wrapper #btn-wrap {
   text-align: center;
   margin-top: 45px;
   margin-bottom: 60px;
