@@ -273,8 +273,7 @@ router.post('/delivery', function (req, res, next){
 ////////ACCOUNT PAGE/////////////
 router.get('/account', function (req, res, next){
 	if(req.session.username){
-		var currUser = req.session.username;
-		Account.findOne({username: currUser},
+		Account.findOne({username: req.session.username},
 			function (err, doc){
 				var currAddress1 = doc.address1
 				var currAddress2 = doc.address2
@@ -288,7 +287,7 @@ router.get('/account', function (req, res, next){
 				var currDeliveryDate = doc.deliveryDate
 
 				res.render('account', {
-					user: req.session.username,
+					username: req.session.username,
 					fullName: currFullName,
 					address1: currAddress1,
 					address2: currAddress2,

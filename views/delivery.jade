@@ -1,29 +1,30 @@
 extends layout
 
 block content
+	include datepicker.html
 	#delivery.container
 		#delivery-wrapper
 			h1#delivery-header Please enter your shipping info
-			h3#delivery-subheader We treat your coffee like gold. Like black gold (not Texas tea). It will be shipped safely and is guaderanteed.
+			h3#delivery-subheader We treat your coffee like gold. Like black gold (not Texas tea). It will be shipped safely and is guaranteed.
 			form(name="delivery-form", action="/delivery", method="post")
 				#delivery-container-header
 					h1 Address
 					#fullname-wrapper
 						label(for="fullNameInput") Full Name
 						input.form-control(name="fullName", type="text", placeholder="Full Name")
-						<h5>Full Name
+						<p>Full Name
 					#addressline-one-wrapper
 						label(for="addresssInput") Address Line 1
 						input.form-control(type='text', name='address1', placeholder="Address Line 1")
-						<h5>Street address, P.O. box, company name, c/o
+						<p>Street address, P.O. box, company name, c/o
 					#addressline-two-wrapper
 						label(for="addressInput") Address Line 2
 						input.form-control(type='text', name='address2', placeholder="Address Line 2")
-						<h5>Apartment, suite, unit, building, floor, etc.
+						<p>Apartment, suite, unit, building, floor, etc.
 					#city-wrapper
 						label(for="cityInput") City
 						input.form-control(type='text', name='city', placeholder="City")
-						<h5>City, town, etc.
+						<p>City, town, etc.
 					#region-wrapper
 						label(for='stateInput') State / Province / Region
 						select.form-control(name="state", type='text')
@@ -78,9 +79,9 @@ block content
 							option(value='WY', selected=(state == 'WY')? true: false) Wyoming
 							option(value='DC', selected=(state == 'DC')? true: false) District of Columbia
 						label(for='zipCodeInput') Zip Code
-						input.form-control.short(name="zipCode", type='number', placeholder='Zip Code', value='#{zipCode}')
-						label(for='deliveryDate') Date of next delivery (this will be your first delivery if you are just signing up) 
-						input#datepicker.form-control.short(name="deliveryDate", type='text', value=deliveryDate, data-provide='datepicker')
+						input.form-control.short(name="zipCode", type='number', placeholder='Zip Code', value='')
+						label(for='deliveryDate') Delivery Date 
+						input.form-control.short(name="deliveryDate", id="datepicker", type='text', value=(deliveryDate), placeholder="Pick Date")
 					#submit-btn-wrap
 						input.submit-btn.btn.btn-primary.btn-lg(type='submit', name='submit')
 
