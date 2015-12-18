@@ -68,77 +68,27 @@ router.get('/login', function(req, res) {
 /////////LOGIN POST//////////
 router.post('/login', function(req, res, next) {
 
-   if(req.body.getStarted){
-       Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
-           if (err) {
-               return res.render('register', { err : err });
-           }
-           if(!err)
-           passport.authenticate('local')(req, res, function () {
-               req.session.username = req.body.username;
-               res.render('choices', { username : req.session.username });
-           });
-       });        
-   }
-
-   if (!req.body.getStarted){
-     passport.authenticate('local', function(err, user, info) {
-       if (err) {
-         return next(err); // will generate a 500 error
-       }
-       // Generate a JSON response reflecting authentication status
+	passport.authenticate('local', function (err, user, info){
+		if (err {
+			return next(err); //will generate a 500 error
+		}
+		//Generate a JSON response reflecting authentication status
        if (! user) {
          return res.redirect('/login?failedlogin=1');
        }
        if (user){
+       		if(user.accessLevel == 5) {//level 5 = Admin
+       			req.session.accessLevel = "Admin";
+       		}
+       		req.session.username = user.username;
+       	}
 
-           // Passport session setup.
-           passport.serializeUser(function(user, done) {
-             console.log("serializing " + user.username);
-             done(null, user);
-           });
-
-           passport.deserializeUser(function(obj, done) {
-             console.log("deserializing " + obj);
-             done(null, obj);
-           });        
-           req.session.username = user.username;
-       }
-
-       return res.redirect('/choices');
-     })(req, res, next);
-   }
+       	return res.redirect('/choices');
+      })(req, res, next);
 });
-// router.post('/login', function(req, res, next) {
 
-//       passport.authenticate('local', function(err, user, info) {
-//         if (err) {
-//           return next(err); // will generate a 500 error
-//         }
-//         // Generate a JSON response reflecting authentication status
-//         if (! user) {
-//           return res.redirect('/login?failedlogin=1');
-//         }
-//         if (user){
-//             // Passport session setup.
-//             passport.serializeUser(function(user, done) {
-//               console.log("serializing " + user.username);
-//               done(null, user);
-//             });
-
-//             passport.deserializeUser(function(obj, done) {
-//               console.log("deserializing " + obj);
-//               done(null, obj);
-//             });        
-//             req.session.username = user.username;
-//         }
-
-//         return res.redirect('/');
-//       })(req, res, next);
-// });
-
-
-//// Logout////
+/////////////////////////////
+//// Logout GET//////////////
 router.get('/logout', function(req, res) {
 	req.session.destroy();
 	res.redirect('/');
@@ -436,8 +386,8 @@ router.get('/contact', function (req, res, next){
 router.get('/admin', function (req, res, next){
 	if(req.session.accessLevel == "Admin"){
 		
-		Account.find(, function (err, doc, next){
-		res.json(doc)
+		Account.find({}, function (err, doc, next){
+
 			res.render('admin', {accounts: doc});
 		});
 		
