@@ -1,12 +1,9 @@
 doctype html
 html
 	head
-		title= title
-		script(src='http://code.jquery.com/jquery.js')
-			
+		title= title	
 		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
 		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 		link(rel='stylesheet', href='/stylesheets/style.css')
 	body
 		#nav
@@ -21,7 +18,7 @@ html
 							a.btn.btn-primary(href="/register") Subscribe
 					if (username)
 						#nav-log-in Welcome,
-							a(href="/myaccount") #{username}
+							a(href="/account") #{username}
 							a.btn.btn-primary(href="/logout") Logout
 
 		if (username)

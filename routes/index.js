@@ -4,6 +4,9 @@ var Account = require('../models/account');
 var router = express.Router();
 var nodemailer = require('nodemailer');
 var vars = require('../config/vars.json');
+var stripe = require('stripe')(
+	'sk_test_2bbpfxzyNVOpMeqzxDIJ2jK8'
+);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -156,10 +159,6 @@ router.get('/choices', function (req, res, next){
 				var currPounds = doc.pounds ? doc.pounds : undefined
 			//ternary conditional
 			// currGrind will set to doc.grind if true, or undefined if false
-				console.log(currGrind)
-				console.log("===========")
-				console.log(currFrequency)
-				console.log("===========")
 				//render the choices view
 				res.render('choices',{
 				 username : req.session.username,
@@ -182,9 +181,6 @@ router.post('/choices', function (req, res, next){
 		var newGrind = req.body.grind;
 		var newFrequency = req.body.frequency;
 		var newPounds = req.body.quarterPounds;
-		console.log("=====freq in post======")
-		console.log(newFrequency);
-		console.log(req.body.frequency);
 
 		Account.findOneAndUpdate(
 			{ username : req.session.username },
@@ -211,13 +207,13 @@ router.get('/delivery', function (req, res, next){
 	if(req.session.username){
 		Account.findOne({ username: req.session.username },
 			function (err, doc){
-				var currFullName = doc.fullName ? doc.fullName : undefined
-				var currAddress1 = doc.address1 ? doc.address1 : undefined
-				var currAddress2 = doc.address2 ? doc.address2 : undefined
-				var currCity = doc.city ? doc.city : undefined
-				var currState = doc.state ? doc.state : undefined
-				var currZipCode = doc.zipCode ? doc.zipCode : undefined
-				var currDeliveryDate = doc.deliveryDate ? doc.deliveryDate : undefined
+				var currFullName = doc.fullName ? doc.fullName : ''
+				var currAddress1 = doc.address1 ? doc.address1 : ''
+				var currAddress2 = doc.address2 ? doc.address2 : ''
+				var currCity = doc.city ? doc.city : ''
+				var currState = doc.state ? doc.state : ''
+				var currZipCode = doc.zipCode ? doc.zipCode : ''
+				var currDeliveryDate = doc.deliveryDate ? doc.deliveryDate : ''
 				res.render( 'delivery', {
 					username: req.session.username,
 					fullName: currFullName,
@@ -244,16 +240,16 @@ router.post('/delivery', function (req, res, next){
 		var newAddress2 = req.body.address2
 		var newCity = req.body.city
 		var newState = req.body.state
-		var newZipCode = req.body,zipCode
+		var newZipCode = req.body.zipCode
 		var newDeliveryDate = req.body.deliveryDate
 
 		var updateList = {
 			fullName: newFullName,
 			address1: newAddress1,
-			addresss2: newAddresss2,
+			addresss2: newAddress2,
 			city: newCity,
 			state: newState,
-			zipCode: newzipCode,
+			zipCode: newZipCode,
 			deliveryDate: newDeliveryDate
 		}
 
@@ -267,47 +263,104 @@ router.post('/delivery', function (req, res, next){
 					account.save;
 				}
 			});
-			res.redirect('/')
+			res.redirect('/payment')
 	}else{
 		res.redirect('/login');
 	}
 })
 
-// router.get('/email', function (req, res, next){
-// 	var transporter = nodemailer.createTransport({
-// 		service = 'Gmail',
-// 		auth: {
-// 			user: vars.email,
-// 			pass: vars.password
-// 		}
-// 	});
-// 	var text = "This is a test email sent from my node server";
-// 	var mailOptions = {
-// 		from: 'Oliver Lai <oliverlai55@gmail.com>',
-// 		to: 'Oliver Lai <oliverlai55@gmail.com>',
-// 		subject: 'This is a test subject',
-// 		text: text
-// 	}
-// 	transporter.sendMail(mailOptions, function(error, info){
-// 		if(error){
-// 			console.log(error);
-// 			res.json({response: error});
+/////////////////////////////////
+////////ACCOUNT PAGE/////////////
+router.get('/account', function (req, res, next){
+	if(req.session.username){
+		var currUser = req.session.username;
+		Account.findOne({username: currUser},
+			function (err, doc){
+				var currAddress1 = doc.address1
+				var currAddress2 = doc.address2
+				var currFullName = doc.fullName
+				var currCity = doc.city
+				var currState = doc.state
+				var currZipCode = doc.zipCode
+				var currGrind = doc.grind
+				var currFrequency = doc.frequency
+				var currPounds = doc.pounds
+				var currDeliveryDate = doc.deliveryDate
 
-// 		}else{
-// 			res.json({respond: "success"});
-// 			console.log("message was successfully send, response was " + info.response);
-// 		}
-// 	})
-// });
+				res.render('account', {
+					user: req.session.username,
+					fullName: currFullName,
+					address1: currAddress1,
+					address2: currAddress2,
+					city: currCity,
+					state: currState,
+					zipCode: currZipCode,
+					deliveryDate: currDeliveryDate,
+					grind: currGrind,
+					frequency: currFrequency,
+					pounds: currPounds
+				});
+			});
+	}else{
+		// req.session.route = req.url
+		res.redirect('/login');
+	}
+});
 
+
+
+
+/////////////////////////////////
+////////Payment GET//////////////
+router.get('/payment', function (req, res, next){
+    //If the user is logged in...
+    if(req.session.username){
+        Account.findOne({ "username": req.session.username}, function (err, doc, next){
+            var currFullName = doc.fullName ? doc.fullName : undefined;
+            var currAddress1 = doc.address1 ? doc.address1 : undefined;
+            var currAddress2 = doc.address2 ? doc.address2 : undefined;
+            var currCity = doc.city ? doc.city : undefined;
+            var currState = doc.city ? doc.state : undefined;
+            var currZipCode = doc.zipCode ? doc.zipCode : undefined;    	
+          	var currDeliveryDate = doc.deliveryDate ? doc.deliveryDate : undefined
+            var currGrind = doc.grind
+            var currFrequency = doc.frequency
+            var currPounds = doc.pounds
+
+            res.render( 'payment', {
+                username: req.session.username,
+                fullName: currFullName,
+                address1: currAddress1,
+                address2: currAddress2,
+                city: currCity,
+                state: currState,
+                zipCode: currZipCode,
+                deliveryDate: currDeliveryDate,
+                grind: currGrind,
+                frequency: currFrequency,
+                pounds: currPounds
+            });
+        });
+    }    
+    if(!req.session.username){
+        //The user is not logged in. Send them to the login page.
+        res.redirect('/login');
+    }    
+});
+
+/////////////////////////////
+///////Payment POST/////////
 router.post('/payment', function (req, res, next){
-	res.json(req.body);
+	if(!req.session.username){
+		// req.session.route = req.url
+		res.redirect('/login');
+	}else{
 
-	stripe.charges.create({
-		amount: 400,
-		currency: "usd",
-		source: req.body.stripeToken,
-		//obtained from stripe
+		res.json(req.body);
+		stripe.charges.create({
+			amount: 400,
+			currency: "usd",
+		source: req.body.stripeToken, //Obtained with Stripe.js
 		description: "Charge for " + req.body.stripeEmail
 	}, function (err, charge){
 		//asynchronously called
@@ -318,8 +371,41 @@ router.post('/payment', function (req, res, next){
 			res.redirect('/thankyou')
 		}
 	});
+	}
 });
 
+//////////////////////////////////
+//////////Email GET///////////////
+// router.get('/email', function (req, res, next){
+// 	var transporter = nodemailer.createTransport({
+// 		service: 'Gmail',
+// 		auth: {
+// 			user: vars.email,
+// 			pass: vars.password
+// 		}
+// 	});
+// 	var text = "This is a test email sent from my node server";
+// 	var mailOptions = {
+// 		from: body.req.name + '<' + body.req.email + '>',
+// 		to: 'Oliver Lai <oliverlai55@gmail.com>',
+// 		subject: 'This is a test subject',
+// 		text: req.body.message + ' this email is from: '
+// 	}
+
+// 	transporter.sendMail(mailOptions, function(error, info){
+// 		if(error){
+// 			console.log(error);
+// 			res.json({response: error});
+// 		}else{
+// 			console.log("Message was successfully sent. Response was " + info.response);
+// 			res.json({response: "success"});
+// 		}
+// 	})
+
+// });
+
+//////////////////////////////////
+//////////Contact GET///////////////
 router.get('/contact', function (req, res, next){
 	res.render('contact');
 });

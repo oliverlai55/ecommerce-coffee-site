@@ -1,0 +1,50 @@
+extends layout
+
+block content
+	#payment
+		#payment-wrapper.container
+			h1 Payment
+			#information-wrap
+				.section-wrap.row(role='form', action='/payment', method='post')
+					.section-header-wrap.col-sm-12
+						h2 Choices
+						a(href='/choices') (Edit)
+					.choice.col-sm-12
+						p.col-sm-3 Grind
+						p.col-sm-9 #{grind ? grind : 'None'}
+					.choice.col-sm-12
+						p.col-sm-3 Frequency of Delivery
+						p.col-sm-9 #{frequency ? frequency : 'None'}
+					.choice.col-sm-12
+						p.col-sm-3 Coffee, in Pounds
+						p.col-sm-9 #{pounds ? pounds : 'None'}
+				.section-wrap.row
+					.section-header-wrap.col-sm-12
+						h2 Delivery Information
+						a(href='/delivery') (Edit)
+					.choice.col-sm-12
+						p.col-sm-3 Full Name
+						p.col-sm-9 #{fullName ? fullName : ''}
+					.choice.col-sm-12
+						p.col-sm-3 Address
+						p.col-sm-9 #{address1 ? address1 : ''}
+					.choice.col-sm-12
+						p.col-sm-3 Address 2
+						p.col-sm-12 #{address2 ? address2 : ''}
+					.choice.col-sm-12
+						p.col-sm-3 City
+						p.col-sm-9 #{city ? city : ''}
+					.choice.col-sm-12
+						p.col-sm-3 State
+						p.col-sm-9 #{state ? state : ''}
+					.choice.col-sm-12
+						p.col-sm-3 Zip code
+						p.col-sm-9 #{zipCode ? zipCode : ''}
+					.choice.col-sm-12
+						p.col-sm-3 Next Delivery
+						p.col-sm-9 #{deliveryDate ? deliveryDate : ''}
+						
+				p We will use your current settings to update your payment info.
+							br
+							include payment.html
+

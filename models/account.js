@@ -7,7 +7,14 @@ var Account = new Schema({
   password: String,
   grind: String,
   frequency: String,
-  pounds: String
+  pounds: String,
+  fullName: String,
+  address1: String,
+  address2: String,
+  city: String,
+  state: String,
+  zipCode: Number,
+  deliveryDate: String
 });
 
 Account.plugin(passportLocalMongoose);

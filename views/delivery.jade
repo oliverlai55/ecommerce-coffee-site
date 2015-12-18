@@ -10,20 +10,20 @@ block content
 					h1 Address
 					#fullname-wrapper
 						label(for="fullNameInput") Full Name
-						input.form-control(type='text', name='fullName', placeholder="Full Name", value='#{fullName}')
-						<h4>Full Name
+						input.form-control(name="fullName", type="text", placeholder="Full Name")
+						<h5>Full Name
 					#addressline-one-wrapper
 						label(for="addresssInput") Address Line 1
-						input.form-control(type='text', name='address1', placeholder="Address Line 1", value='#{address1}')
-						<h4>Street address, P.O. box, company name, c/o
+						input.form-control(type='text', name='address1', placeholder="Address Line 1")
+						<h5>Street address, P.O. box, company name, c/o
 					#addressline-two-wrapper
 						label(for="addressInput") Address Line 2
-						input.form-control(type='text', name='address2', placeholder="Address Line 2", value='#{address2}')
-						<h4>Apartment, suite, unit, building, floor, etc.
+						input.form-control(type='text', name='address2', placeholder="Address Line 2")
+						<h5>Apartment, suite, unit, building, floor, etc.
 					#city-wrapper
 						label(for="cityInput") City
-						input.form-control(type='text', name='city', placeholder="City", value='#{city}')
-						<h4>City, town, etc.
+						input.form-control(type='text', name='city', placeholder="City")
+						<h5>City, town, etc.
 					#region-wrapper
 						label(for='stateInput') State / Province / Region
 						select.form-control(name="state", type='text')
@@ -80,7 +80,7 @@ block content
 						label(for='zipCodeInput') Zip Code
 						input.form-control.short(name="zipCode", type='number', placeholder='Zip Code', value='#{zipCode}')
 						label(for='deliveryDate') Date of next delivery (this will be your first delivery if you are just signing up) 
-						input.form-control.short(name="deliveryDate", type='text', value='#{deliveryDate}')
+						input#datepicker.form-control.short(name="deliveryDate", type='text', value=deliveryDate, data-provide='datepicker')
 					#submit-btn-wrap
 						input.submit-btn.btn.btn-primary.btn-lg(type='submit', name='submit')
 
