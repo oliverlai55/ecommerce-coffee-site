@@ -762,3 +762,11 @@ h2.how-it-works_label {
   margin-top: 45px;
   margin-bottom: 60px;
 }
+
+/* line 6, ../../compass/sass/views/_thankyou.scss */
+#thankyou-wrapper {
+  border: 2px solid #d8d3c8;
+  border-radius: 5px;
+  padding: 35px 30px 40px;
+  margin-top: 4%;
+}

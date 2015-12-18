@@ -20,6 +20,8 @@ html
 						#nav-log-in Welcome,
 							a(href="/account") #{username}
 							a.btn.btn-primary(href="/logout") Logout
+							if (accessLevel)
+								a.btn.btn-warning(href='/admin') Admin
 
 		if (username)
 			#signup-wrapper

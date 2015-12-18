@@ -91,6 +91,7 @@ router.post('/login', function(req, res, next) {
          return res.redirect('/login?failedlogin=1');
        }
        if (user){
+
            // Passport session setup.
            passport.serializeUser(function(user, done) {
              console.log("serializing " + user.username);
@@ -373,6 +374,27 @@ router.post('/payment', function (req, res, next){
 	}
 });
 
+router.get('/thankyou', function (req, res, next){
+	if(!req.session.username){
+		res.redirect('/login');
+	}else{
+        Account.findOne({ "username": req.session.username}, function (err, doc, next){
+            var currFullName = doc.fullName ? doc.fullName : undefined;
+            var currAddress1 = doc.address1 ? doc.address1 : undefined;
+            var currAddress2 = doc.address2 ? doc.address2 : undefined;
+            var currCity = doc.city ? doc.city : undefined;
+            var currState = doc.city ? doc.state : undefined;
+            var currZipCode = doc.zipCode ? doc.zipCode : undefined;    	
+          	var currDeliveryDate = doc.deliveryDate ? doc.deliveryDate : undefined
+            var currGrind = doc.grind
+            var currFrequency = doc.frequency
+            var currPounds = doc.pounds
+
+            res.render( 'thankyou', { username: req.session.username });
+        });
+       
+	}
+});
 //////////////////////////////////
 //////////Email GET///////////////
 // router.get('/email', function (req, res, next){
@@ -407,6 +429,22 @@ router.post('/payment', function (req, res, next){
 //////////Contact GET///////////////
 router.get('/contact', function (req, res, next){
 	res.render('contact');
+});
+
+////////////////////////////////////
+//////////ADMIN GET///////////////
+router.get('/admin', function (req, res, next){
+	if(req.session.accessLevel == "Admin"){
+		
+		Account.find(, function (err, doc, next){
+		res.json(doc)
+			res.render('admin', {accounts: doc});
+		});
+		
+	}else{
+		//user doesn't belong here
+		res.redirect('/');
+	}
 });
 
 module.exports = router;
