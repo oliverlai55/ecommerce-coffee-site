@@ -69,7 +69,7 @@ router.get('/login', function(req, res) {
 router.post('/login', function(req, res, next) {
 
 	passport.authenticate('local', function (err, user, info){
-		if (err {
+		if (err) {
 			return next(err); //will generate a 500 error
 		}
 		//Generate a JSON response reflecting authentication status
