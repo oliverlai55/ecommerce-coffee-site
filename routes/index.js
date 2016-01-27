@@ -11,7 +11,7 @@ var stripe = require('stripe')(
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { username : req.session.username,
-  							active: 'welcome' });
+  							active: "welcome" });
 });
 
 //////////////////////////
@@ -114,7 +114,7 @@ router.get('/choices', function (req, res, next){
 				//render the choices view
 				res.render('choices',{
 				 username : req.session.username,
-				 active: 'options',
+				 active: "options",
 				 grind : currGrind,
 				 frequency : currFrequency,
 				 pounds : currPounds 
@@ -169,7 +169,7 @@ router.get('/delivery', function (req, res, next){
 				var currDeliveryDate = doc.deliveryDate ? doc.deliveryDate : ''
 				res.render( 'delivery', {
 					username: req.session.username,
-					active: 'deliver',
+					active: "delivery",
 					fullName: currFullName,
 					address1: currAddress1,
 					address2: currAddress2,
