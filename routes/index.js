@@ -7,10 +7,11 @@ var nodemailer = require('nodemailer');
 var stripe = require('stripe')(
 	'sk_test_lGVN1R3LkUOb0w5PX7cV0JpS'
 );
-
+/////////////////////////////////
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { username : req.session.username });
+  res.render('index', { username : req.session.username,
+  							active: 'welcome' });
 });
 
 //////////////////////////
@@ -113,6 +114,7 @@ router.get('/choices', function (req, res, next){
 				//render the choices view
 				res.render('choices',{
 				 username : req.session.username,
+				 active: 'options',
 				 grind : currGrind,
 				 frequency : currFrequency,
 				 pounds : currPounds 
@@ -167,6 +169,7 @@ router.get('/delivery', function (req, res, next){
 				var currDeliveryDate = doc.deliveryDate ? doc.deliveryDate : ''
 				res.render( 'delivery', {
 					username: req.session.username,
+					active: 'deliver',
 					fullName: currFullName,
 					address1: currAddress1,
 					address2: currAddress2,
@@ -279,6 +282,7 @@ router.get('/payment', function (req, res, next){
 
             res.render( 'payment', {
                 username: req.session.username,
+                active: "payment",
                 fullName: currFullName,
                 address1: currAddress1,
                 address2: currAddress2,
