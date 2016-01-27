@@ -369,7 +369,12 @@ body {
   font-size: 12px;
 }
 
-/* line 6, ../../compass/sass/views/_home.scss */
+/* line 5, ../../compass/sass/views/_home.scss */
+#header #subscribe-box #home-button {
+  width: 100% !important;
+}
+
+/* line 9, ../../compass/sass/views/_home.scss */
 h2.how-it-works_label {
   text-align: center;
   font-weight: 700;
@@ -380,14 +385,14 @@ h2.how-it-works_label {
   text-transform: uppercase;
 }
 
-/* line 16, ../../compass/sass/views/_home.scss */
+/* line 19, ../../compass/sass/views/_home.scss */
 .how-it-works {
   background: #fff;
   position: relative;
   border-top: 1px solid #d8d3c8;
   margin-bottom: 90px;
 }
-/* line 22, ../../compass/sass/views/_home.scss */
+/* line 25, ../../compass/sass/views/_home.scss */
 .how-it-works:after {
   content: '';
   display: block;
@@ -401,7 +406,7 @@ h2.how-it-works_label {
   left: 50%;
   margin-left: -30px;
 }
-/* line 36, ../../compass/sass/views/_home.scss */
+/* line 39, ../../compass/sass/views/_home.scss */
 .how-it-works:before {
   content: '';
   display: block;
@@ -416,28 +421,28 @@ h2.how-it-works_label {
   margin-left: -30px;
 }
 
-/* line 52, ../../compass/sass/views/_home.scss */
+/* line 55, ../../compass/sass/views/_home.scss */
 .how-it-works_inner {
   position: relative;
   padding: 90px 60px 60px;
 }
-/* line 56, ../../compass/sass/views/_home.scss */
+/* line 59, ../../compass/sass/views/_home.scss */
 .how-it-works_inner .works-text {
   width: 50%;
   float: left;
 }
-/* line 61, ../../compass/sass/views/_home.scss */
+/* line 64, ../../compass/sass/views/_home.scss */
 .how-it-works_inner h3 {
   font-weight: 700;
   font-size: 48px;
   margin-bottom: 30px;
 }
-/* line 67, ../../compass/sass/views/_home.scss */
+/* line 70, ../../compass/sass/views/_home.scss */
 .how-it-works_inner p {
   font-size: 18px;
   margin-left: 60px;
 }
-/* line 72, ../../compass/sass/views/_home.scss */
+/* line 75, ../../compass/sass/views/_home.scss */
 .how-it-works_inner .works-image {
   float: left;
   border: 15px solid #fff;
@@ -448,14 +453,14 @@ h2.how-it-works_label {
   -webkit-transform: rotate(-5deg);
   transform: rotate(-5deg);
 }
-/* line 79, ../../compass/sass/views/_home.scss */
+/* line 82, ../../compass/sass/views/_home.scss */
 .how-it-works_inner .works-image img {
   display: block;
   max-width: 100%;
   border: 1px solid #a08855;
 }
 
-/* line 87, ../../compass/sass/views/_home.scss */
+/* line 90, ../../compass/sass/views/_home.scss */
 .how-it-works-one {
   background: url('../images/CoffeeBags.jpg?1450132611') center bottom no-repeat;
   background-size: cover;
@@ -463,7 +468,7 @@ h2.how-it-works_label {
   color: #fff;
   text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
 }
-/* line 94, ../../compass/sass/views/_home.scss */
+/* line 97, ../../compass/sass/views/_home.scss */
 .how-it-works-one:before {
   content: '';
   display: block;
@@ -477,16 +482,16 @@ h2.how-it-works_label {
   background: url('../images/CoffeeBags_corner.png?1450132611') center top no-repeat;
 }
 
-/* line 108, ../../compass/sass/views/_home.scss */
+/* line 111, ../../compass/sass/views/_home.scss */
 .how-it-works-two {
   background: url('../images/canvas.jpg?1450132611') center bottom repeat;
   position: relative;
 }
-/* line 112, ../../compass/sass/views/_home.scss */
+/* line 115, ../../compass/sass/views/_home.scss */
 .how-it-works-two .works-text {
   float: right;
 }
-/* line 116, ../../compass/sass/views/_home.scss */
+/* line 119, ../../compass/sass/views/_home.scss */
 .how-it-works-two:before {
   content: '';
   display: block;
@@ -501,7 +506,7 @@ h2.how-it-works_label {
   background: url('../images/canvas_corner.png?1450132611') center top no-repeat;
 }
 
-/* line 131, ../../compass/sass/views/_home.scss */
+/* line 134, ../../compass/sass/views/_home.scss */
 .how-it-works-three {
   background: url('../images/cupSteam.jpg?1450132611') right bottom no-repeat #000;
   background-size: contain;
@@ -509,7 +514,7 @@ h2.how-it-works_label {
   color: #fff;
   text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
 }
-/* line 138, ../../compass/sass/views/_home.scss */
+/* line 141, ../../compass/sass/views/_home.scss */
 .how-it-works-three:after {
   content: '';
   display: block;
@@ -524,7 +529,7 @@ h2.how-it-works_label {
   margin-left: -30px;
   margin-top: -1px;
 }
-/* line 153, ../../compass/sass/views/_home.scss */
+/* line 156, ../../compass/sass/views/_home.scss */
 .how-it-works-three:before {
   content: '';
   display: block;
@@ -539,7 +544,7 @@ h2.how-it-works_label {
   margin-left: -30px;
 }
 
-/* line 170, ../../compass/sass/views/_home.scss */
+/* line 173, ../../compass/sass/views/_home.scss */
 .head-box {
   background-color: #fff;
   padding: 30px;
@@ -548,19 +553,19 @@ h2.how-it-works_label {
   border: 1px solid #d8d3c8;
   border-radius: 5px;
 }
-/* line 178, ../../compass/sass/views/_home.scss */
+/* line 181, ../../compass/sass/views/_home.scss */
 .head-box h2 {
   margin-top: 0;
   font-weight: 700;
   max-width: 80%;
 }
 
-/* line 186, ../../compass/sass/views/_home.scss */
+/* line 189, ../../compass/sass/views/_home.scss */
 .home-container {
   position: relative;
 }
 
-/* line 191, ../../compass/sass/views/_home.scss */
+/* line 194, ../../compass/sass/views/_home.scss */
 #getStarted {
   font-weight: 700;
   letter-spacing: 2px;
@@ -573,39 +578,39 @@ h2.how-it-works_label {
   margin: 0 20px;
   line-height: 1;
 }
-/* line 203, ../../compass/sass/views/_home.scss */
+/* line 206, ../../compass/sass/views/_home.scss */
 #getStarted:hover {
   color: #fff;
   background: #16613e;
   text-decoration: none;
 }
 
-/* line 211, ../../compass/sass/views/_home.scss */
+/* line 214, ../../compass/sass/views/_home.scss */
 #login-wrapper {
   background-color: rgba(200, 200, 200, 0.7);
 }
 
 @media (max-width: 600px) {
-  /* line 217, ../../compass/sass/views/_home.scss */
+  /* line 220, ../../compass/sass/views/_home.scss */
   .how-it-works_inner {
     padding: 60px 20px;
   }
-  /* line 220, ../../compass/sass/views/_home.scss */
+  /* line 223, ../../compass/sass/views/_home.scss */
   .how-it-works_inner .works-text {
     width: auto;
     float: none;
   }
-  /* line 225, ../../compass/sass/views/_home.scss */
+  /* line 228, ../../compass/sass/views/_home.scss */
   .how-it-works_inner h3 {
     font-size: 36px;
     margin-bottom: 15px;
   }
-  /* line 230, ../../compass/sass/views/_home.scss */
+  /* line 233, ../../compass/sass/views/_home.scss */
   .how-it-works_inner p {
     font-size: 14px;
     margin-left: 0;
   }
-  /* line 234, ../../compass/sass/views/_home.scss */
+  /* line 237, ../../compass/sass/views/_home.scss */
   .how-it-works_inner .works-image {
     float: none;
     width: 85%;

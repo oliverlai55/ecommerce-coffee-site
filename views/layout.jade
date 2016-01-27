@@ -27,13 +27,13 @@ html
 			#signup-wrapper
 				.container
 					ul.signup-progress
-						li
+						li(class=((active == "welcome") ? 'active' : ""))
 							a(href="/").welcome 1. Welcome
-						li.active
+						li(class=((active == "options") ? 'active' : ""))
 							a(href="/choices").options 2. Options
-						li
+						li(class=((active == "delivery") ? 'active' : ""))
 							a(href="/delivery").delivery  3. Delivery
-						li
+						li(class=((active == "payment") ? 'active' : ""))
 							a(href="/payment").payment 4. Payment
 
 		block content
