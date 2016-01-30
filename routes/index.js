@@ -41,7 +41,7 @@ router.post('/register', function(req, res, next){
 					req.session.username = req.body.username;
 					//fast way to get username w/o getting in db
 					// session module of express
-					res.render('index', { username : req.session.username });
+					res.redirect('/choices');
 				});
 			}
 		});
