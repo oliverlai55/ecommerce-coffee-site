@@ -39,32 +39,36 @@ body {
   position: relative;
   height: 450px;
 }
-/* line 22, ../../compass/sass/layout/_header.scss */
+/* line 20, ../../compass/sass/layout/_header.scss */
+#header #header-inner #home-button {
+  margin-top: 3%;
+}
+/* line 25, ../../compass/sass/layout/_header.scss */
 #header img {
   width: 100%;
 }
-/* line 26, ../../compass/sass/layout/_header.scss */
+/* line 29, ../../compass/sass/layout/_header.scss */
 #header #header-text-wrapper {
   width: 45%;
   position: absolute;
   bottom: 120px;
   text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
 }
-/* line 32, ../../compass/sass/layout/_header.scss */
+/* line 35, ../../compass/sass/layout/_header.scss */
 #header #header-text-wrapper #header-text {
   font-size: 50px;
   color: #edebe6;
   line-height: 1;
   margin-bottom: 5px;
 }
-/* line 39, ../../compass/sass/layout/_header.scss */
+/* line 42, ../../compass/sass/layout/_header.scss */
 #header #header-text-wrapper #header-sub-text {
   font-size: 30px;
   color: #edebe6;
   line-height: 1;
   margin: 0;
 }
-/* line 47, ../../compass/sass/layout/_header.scss */
+/* line 50, ../../compass/sass/layout/_header.scss */
 #header #subscribe-box {
   position: absolute;
   top: 14%;
@@ -74,11 +78,11 @@ body {
   background: #fff;
   background: rgba(255, 255, 255, 0.8);
 }
-/* line 56, ../../compass/sass/layout/_header.scss */
+/* line 59, ../../compass/sass/layout/_header.scss */
 #header #subscribe-box .form-group {
   padding: 0 30px;
 }
-/* line 59, ../../compass/sass/layout/_header.scss */
+/* line 62, ../../compass/sass/layout/_header.scss */
 #header #subscribe-box #sub-header {
   max-width: 80%;
   margin: auto;
@@ -89,7 +93,7 @@ body {
   line-height: 1em;
   padding-top: 10px;
 }
-/* line 69, ../../compass/sass/layout/_header.scss */
+/* line 72, ../../compass/sass/layout/_header.scss */
 #header #subscribe-box #sub-text {
   max-width: 50%;
   margin: auto;
@@ -98,7 +102,7 @@ body {
   text-align: center;
   padding-bottom: 10px;
 }
-/* line 78, ../../compass/sass/layout/_header.scss */
+/* line 81, ../../compass/sass/layout/_header.scss */
 #header #subscribe-box button {
   width: 50%;
   padding: 10px;
@@ -111,18 +115,18 @@ body {
   font-size: 16px;
   text-align: center;
 }
-/* line 90, ../../compass/sass/layout/_header.scss */
+/* line 93, ../../compass/sass/layout/_header.scss */
 #header #subscribe-box #or-button {
   text-align: center;
   font-size: 20px;
 }
 
-/* line 98, ../../compass/sass/layout/_header.scss */
+/* line 101, ../../compass/sass/layout/_header.scss */
 .container-header-text {
   font-size: 12px;
 }
 
-/* line 102, ../../compass/sass/layout/_header.scss */
+/* line 105, ../../compass/sass/layout/_header.scss */
 #nav {
   overflow: hidden;
   padding: 10px 0;
@@ -144,7 +148,7 @@ body {
   z-index: 1000;
   border-bottom: 1px solid #a08855;
 }
-/* line 118, ../../compass/sass/layout/_header.scss */
+/* line 121, ../../compass/sass/layout/_header.scss */
 #nav #logo {
   float: left;
   height: 0;
@@ -153,22 +157,22 @@ body {
   overflow: hidden;
   background: url('../images/dc_roasters_105x65_lt.png?1450132611') no-repeat;
 }
-/* line 127, ../../compass/sass/layout/_header.scss */
+/* line 130, ../../compass/sass/layout/_header.scss */
 #nav #right-wrapper {
   float: right;
 }
-/* line 130, ../../compass/sass/layout/_header.scss */
+/* line 133, ../../compass/sass/layout/_header.scss */
 #nav #right-wrapper #nav-log-in, #nav #right-wrapper #nav-subscribe {
   display: inline;
 }
-/* line 132, ../../compass/sass/layout/_header.scss */
+/* line 135, ../../compass/sass/layout/_header.scss */
 #nav #right-wrapper #nav-log-in a, #nav #right-wrapper #nav-subscribe a {
   display: inline-block;
   padding: 0 10px;
   line-height: 65px;
   color: #fff;
 }
-/* line 138, ../../compass/sass/layout/_header.scss */
+/* line 141, ../../compass/sass/layout/_header.scss */
 #nav #right-wrapper #nav-log-in .btn, #nav #right-wrapper #nav-subscribe .btn {
   line-height: 35px;
   margin-left: 10px;
@@ -176,12 +180,12 @@ body {
   text-transform: none;
 }
 
-/* line 149, ../../compass/sass/layout/_header.scss */
+/* line 152, ../../compass/sass/layout/_header.scss */
 #signup-wrapper {
   background: #3a2f27;
   border-bottom: 1px solid #a08855;
 }
-/* line 153, ../../compass/sass/layout/_header.scss */
+/* line 156, ../../compass/sass/layout/_header.scss */
 #signup-wrapper ul {
   margin: 5px 30px;
   padding: 0;
@@ -189,14 +193,14 @@ body {
   background: #493b31;
   border-radius: 10px;
 }
-/* line 161, ../../compass/sass/layout/_header.scss */
+/* line 164, ../../compass/sass/layout/_header.scss */
 #signup-wrapper li {
   float: left;
   width: 25%;
   list-style-type: none;
   padding: 5px;
 }
-/* line 168, ../../compass/sass/layout/_header.scss */
+/* line 171, ../../compass/sass/layout/_header.scss */
 #signup-wrapper a {
   color: #776050;
   font-weight: 700;
@@ -207,38 +211,38 @@ body {
   display: block;
   overflow: hidden;
 }
-/* line 180, ../../compass/sass/layout/_header.scss */
+/* line 183, ../../compass/sass/layout/_header.scss */
 #signup-wrapper .active a {
   color: #fff;
   background-image: url('../images/menu-steps-active.png?1450132612');
 }
-/* line 187, ../../compass/sass/layout/_header.scss */
+/* line 190, ../../compass/sass/layout/_header.scss */
 #signup-wrapper .welcome {
   background-position: 0 0;
 }
-/* line 188, ../../compass/sass/layout/_header.scss */
+/* line 191, ../../compass/sass/layout/_header.scss */
 #signup-wrapper .options {
   background-position: 0 -30px;
 }
-/* line 189, ../../compass/sass/layout/_header.scss */
+/* line 192, ../../compass/sass/layout/_header.scss */
 #signup-wrapper .delivery {
   background-position: 0 -60px;
 }
-/* line 190, ../../compass/sass/layout/_header.scss */
+/* line 193, ../../compass/sass/layout/_header.scss */
 #signup-wrapper .payment {
   background-position: 0 -90px;
 }
 
 @media (max-width: 600px) {
-  /* line 198, ../../compass/sass/layout/_header.scss */
+  /* line 201, ../../compass/sass/layout/_header.scss */
   #header.loggedin #header-inner {
     height: auto;
   }
-  /* line 203, ../../compass/sass/layout/_header.scss */
+  /* line 206, ../../compass/sass/layout/_header.scss */
   #header #header-inner {
     height: auto;
   }
-  /* line 207, ../../compass/sass/layout/_header.scss */
+  /* line 210, ../../compass/sass/layout/_header.scss */
   #header #header-text-wrapper {
     width: auto;
     position: static;
@@ -246,21 +250,21 @@ body {
     text-align: center;
     margin: 30px 15px;
   }
-  /* line 214, ../../compass/sass/layout/_header.scss */
+  /* line 217, ../../compass/sass/layout/_header.scss */
   #header #header-text-wrapper #header-text {
     font-size: 50px;
     color: #edebe6;
     line-height: 1;
     margin-bottom: 5px;
   }
-  /* line 221, ../../compass/sass/layout/_header.scss */
+  /* line 224, ../../compass/sass/layout/_header.scss */
   #header #header-text-wrapper #header-sub-text {
     font-size: 30px;
     color: #edebe6;
     line-height: 1;
     margin: 0;
   }
-  /* line 229, ../../compass/sass/layout/_header.scss */
+  /* line 232, ../../compass/sass/layout/_header.scss */
   #header #subscribe-box {
     position: static;
     width: auto;
@@ -270,11 +274,11 @@ body {
     max-width: 300px;
   }
 
-  /* line 240, ../../compass/sass/layout/_header.scss */
+  /* line 243, ../../compass/sass/layout/_header.scss */
   #signup-wrapper ul {
     padding: 0 15px;
   }
-  /* line 243, ../../compass/sass/layout/_header.scss */
+  /* line 246, ../../compass/sass/layout/_header.scss */
   #signup-wrapper li {
     float: none;
     width: auto;
@@ -282,7 +286,7 @@ body {
     padding: 5px;
     border-top: 1px dotted #776050;
   }
-  /* line 250, ../../compass/sass/layout/_header.scss */
+  /* line 253, ../../compass/sass/layout/_header.scss */
   #signup-wrapper li:first-child {
     border: none;
   }

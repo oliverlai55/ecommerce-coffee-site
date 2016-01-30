@@ -15,8 +15,10 @@ block content
 				#header-text-wrapper
 					h1#header-text A better way to grind
 					p#header-sub-text Freshly roasted coffee beans delivered weekly to your door.
-				#subscribe-box
-					#sub-header What are you waiting for? 
+					a(href="/register")		
+						button#home-button.btn.btn-success.btn-lg(type='submit' name='getStarted') Get Started
+				//- #subscribe-box
+				//- 	#sub-header What are you waiting for? 
 					//- form(role='form', action="/login", method="post")
 						//- .form-group
 						//- 	label Enter Email Address
@@ -25,8 +27,7 @@ block content
 						//- 	label Password
 						//- 	input.form-control(type='password', name="password")
 					.cta-container
-						a(href="/register")		
-							button#home-button(type='submit' name='getStarted') Get Started
+
 
 	.container
 		.head-box
