@@ -74,17 +74,23 @@ router.post('/login', function(req, res, next) {
 			return next(err); //will generate a 500 error
 		}
 		//Generate a JSON response reflecting authentication status
-       if (! user) {
+       if (!user) {
          return res.redirect('/login?failedlogin=1');
        }
        if (user){
        		if(user.accessLevel == 5) {//level 5 = Admin
        			req.session.accessLevel = "Admin";
        		}
+       		passport.serializeUser(function (user, done){
+       			done(null, user);
+       		});
+       		passport.deserializeUser(function (obj, done){
+       			done(null, obj);
+       		});
        		req.session.username = user.username;
        	}
 
-       	return res.redirect('/choices');
+       	return res.redirect(req.session.route ? req.session.route : '/choices')
       })(req, res, next);
 });
 
